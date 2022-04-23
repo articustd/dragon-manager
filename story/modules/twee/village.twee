@@ -1,0 +1,15 @@
+:: StoryTitle
+Village
+
+
+:: StoryData {"position":"0,125"}
+{
+	"ifid": "710FBD8F-5366-4180-B704-122E3FD9CC35",
+	"format": "SugarCube",
+	"format-version": "2.34.1",
+	"start": "start",
+	"zoom": 1
+}
+
+
+:: StoryInit {"position":"25,425","size":"100,100"}

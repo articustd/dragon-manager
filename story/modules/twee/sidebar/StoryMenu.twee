@@ -1,0 +1,7 @@
+:: StoryBanner {"position":"250,125"}
+
+:: StorySubtitle {"position":"375,0"}
+
+:: StoryCaption {"position":"25,550","size":"100,100"}
+
+:: StoryMenu {"position":"25,675","size":"100,100"}
