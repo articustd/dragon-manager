@@ -7,7 +7,8 @@ var lastFrameTimeMs = 0, // The last time the loop was run
     fps = 60,
     framesThisSecond = 0,
     lastFpsUpdate = 0,
-    tick = 0
+    tick = 0,
+    updates = []
 
 function mainLoop(timestamp) {
     if (timestamp < lastFrameTimeMs + timestep) {
@@ -43,6 +44,11 @@ function mainLoop(timestamp) {
 
 function update(delta) {
     tick += _.floor(delta / timestep)
+
+    _.each(updates, (func)=>{
+        func(delta)
+    })
+
     console.log(`Tick: ${tick}`)
 }
 
@@ -54,4 +60,8 @@ function panic() {
 
 export function startGame() {
     requestAnimationFrame(mainLoop)
+}
+
+export function addUpdate(update) {
+    updates.push(update)
 }
