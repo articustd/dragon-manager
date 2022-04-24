@@ -1,5 +1,6 @@
 import { startGame } from '@controller/gameloop';
 import storyConfig from './config.json'
+import golemTemplate from './template/golemTemplate'
 import startTimer from './macro/startTimer'
 Config = { ...Config, ...storyConfig };
 setup.ImagePath = "assets/";

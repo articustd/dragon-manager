@@ -3,23 +3,25 @@ import _ from 'lodash'
 
 var lastFrameTimeMs = 0, // The last time the loop was run
     maxFPS = 30, // The maximum FPS we want to allow
-    timestep = 1000 / 60,
+    timestep = 1000 / 30,
     delta = 0,
     fps = 60,
     framesThisSecond = 0,
     lastFpsUpdate = 0,
     tick = 0,
+    tickInterval = 30,
+    tickProgress = 0,
     updates = []
 
 function mainLoop(timestamp) {
-    if (timestamp < lastFrameTimeMs + timestep) {
+    if (timestamp < lastFrameTimeMs + (1000/maxFPS)) {
         requestAnimationFrame(mainLoop)
         return;
     }
 
     delta += timestamp - lastFrameTimeMs // get delta time since last frame
     lastFrameTimeMs = timestamp
-
+    
     if (timestamp > lastFpsUpdate + 1000) { // update every second
         fps = 0.25 * framesThisSecond + (1-0.25) * fps // new fps
 
@@ -30,10 +32,13 @@ function mainLoop(timestamp) {
 
     let numUpdateSteps = 0
     while (delta >= timestep) {
-        update(delta)
+        tickProgress += 1
+        if(tickProgress >= tickInterval){
+            update(delta)
+            tickProgress = 0
+        }
         delta -= timestep
-
-        if(++numUpdateSteps >=240) { // sanity check
+        if(++numUpdateSteps >= 240) { // sanity check
             panic() // fix state
             break // bail
         }
@@ -44,7 +49,7 @@ function mainLoop(timestamp) {
 }
 
 function update(delta) {
-    tick += _.floor(delta / timestep)
+    tick += 1
 
     _.each(updates, (func)=>{
         func(delta)
