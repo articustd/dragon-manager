@@ -1,3 +1,4 @@
+import { logger } from '@util/Logging';
 import _ from 'lodash'
 
 var lastFrameTimeMs = 0, // The last time the loop was run
@@ -49,11 +50,11 @@ function update(delta) {
         func(delta)
     })
 
-    console.log(`Tick: ${tick}`)
+    logger(`Tick: ${tick}`)
 }
 
 function panic() {
-    console.log(`PANIC`)
+    logger(`PANIC`)
     delta = 0 // discard unsimulated time
     // do anything else that needs to bring state up to where it needs to be
 }

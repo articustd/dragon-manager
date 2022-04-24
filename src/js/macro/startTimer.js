@@ -1,4 +1,5 @@
 import { addUpdate } from "@controller/gameloop"
+import { logger } from "@util/Logging"
 
 Macro.add('startTimer', {
     skipArgs: false,
@@ -14,5 +15,5 @@ Macro.add('startTimer', {
 })
 
 function testUpdate() {
-    console.log(`Test Update`)
+    logger(`Test Update`)
 }
