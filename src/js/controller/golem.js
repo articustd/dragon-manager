@@ -3,8 +3,9 @@ import { addUpdate } from "./gameloop";
 
 export class GolemController {
     population = 1
-    spawnTime = 1
-    currSpawnTime;
+    spawnRate = 1
+    spawnAmt = 1
+    currSpawnRate;
 
     constructor() {
         if (variables().population)
@@ -12,7 +13,7 @@ export class GolemController {
         else
             variables().population = this.population
 
-        this.currSpawnTime = this.spawnTime
+        this.currSpawnRate = this.spawnRate
         this.start()
     }
 
@@ -21,13 +22,12 @@ export class GolemController {
     }
 
     update = (delta) => {
-        this.currSpawnTime -= 1
-        if (this.currSpawnTime <= 0) {
-            this.currSpawnTime = this.spawnTime
-            this.population += 1
+        this.currSpawnRate -= 1
+        if (this.currSpawnRate <= 0) {
+            this.currSpawnRate = this.spawnRate
+            this.population += this.spawnAmt
             this.popListener(this.population)
             variables().population = this.population
-            // logger(`Current Population: ${this.population}`)
         }
     }
 
@@ -35,18 +35,23 @@ export class GolemController {
 
     }
 
-    get population() {return this.population}
+    get population() { return this.population }
     set population(val) {
-        logger(`here`)
         this.population = val
         popListener(val)
     }
 
-    updatePop = (val) => {this.population = val}
+    set spawnAmt(val) { this.spawnAmt = val }
+
+    updatePop = (val) => { this.population = val }
     popListener = (val) => { }
     registerNewPopListener = (externalListenerFunction) => { this.popListener = externalListenerFunction }
     // get currSpawnTime() {return this.currSpawnTime}
     // set currSpawnTime(x) {this.currSpawnTime = x}
-    // get spawnTime() {return this.spawnTime}
+    get spawnRate() { return this.spawnRate }
+    set spawnRate(val) { this.spawnRate = val }
+
+    get spawnAmt() { return this.spawnAmt }
+    set spawnAmt(val) { this.spawnAmt = val }
 }
 

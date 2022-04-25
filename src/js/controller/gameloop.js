@@ -14,16 +14,16 @@ var lastFrameTimeMs = 0, // The last time the loop was run
     updates = []
 
 function mainLoop(timestamp) {
-    if (timestamp < lastFrameTimeMs + (1000/maxFPS)) {
+    if (timestamp < lastFrameTimeMs + (1000 / maxFPS)) {
         requestAnimationFrame(mainLoop)
         return;
     }
 
     delta += timestamp - lastFrameTimeMs // get delta time since last frame
     lastFrameTimeMs = timestamp
-    
+
     if (timestamp > lastFpsUpdate + 1000) { // update every second
-        fps = 0.25 * framesThisSecond + (1-0.25) * fps // new fps
+        fps = 0.25 * framesThisSecond + (1 - 0.25) * fps // new fps
 
         lastFpsUpdate = timestamp
         framesThisSecond = 0
@@ -33,12 +33,12 @@ function mainLoop(timestamp) {
     let numUpdateSteps = 0
     while (delta >= timestep) {
         tickProgress += 1
-        if(tickProgress >= tickInterval){
+        if (tickProgress >= tickInterval) {
             update(delta)
             tickProgress = 0
         }
         delta -= timestep
-        if(++numUpdateSteps >= 240) { // sanity check
+        if (++numUpdateSteps >= 240) { // sanity check
             panic() // fix state
             break // bail
         }
@@ -51,7 +51,7 @@ function mainLoop(timestamp) {
 function update(delta) {
     tick += 1
 
-    _.each(updates, (func)=>{
+    _.each(updates, (func) => {
         func(delta)
     })
 
@@ -71,3 +71,6 @@ export function startGame() {
 export function addUpdate(update) {
     updates.push(update)
 }
+
+export function getTickInterval() { return tickInterval }
+export function setTickInterval(val) { tickInterval = val }
