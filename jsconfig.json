@@ -8,6 +8,7 @@
         "paths": {
             "@util/*": ["src/js/controller/util/*"],
             "@controller/*": ["src/js/controller/*"],
+            "@GameEngine/*": ["src/js/GameEngine/*"],
             "@js/*": ["src/js/*"]
         }
     },

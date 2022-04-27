@@ -1,14 +1,15 @@
 import { logger } from "@util/Logging";
-import { addUpdate } from "../GameEngine/mainloop";
+import { GameObject } from "@GameEngine/gameobjects/gameobject";
+import { addUpdate } from "@GameEngine/mainloop";
 
-export class GolemController {
+export class GolemController extends GameObject {
     _population = 1
     _spawnRate = 1
     _spawnAmt = 1
     _currSpawnRate;
 
     constructor() {
-        // super()
+        super()
 
         if (variables().population)
             this.population = variables().population
@@ -40,8 +41,8 @@ export class GolemController {
 
     popListener = (val) => { }
     registerNewPopListener = (externalListenerFunction) => { this.popListener = externalListenerFunction }
-    get currSpawnRate() {return this._currSpawnRate}
-    set currSpawnRate(x) {this._currSpawnRate = x}
+    get currSpawnRate() { return this._currSpawnRate }
+    set currSpawnRate(x) { this._currSpawnRate = x }
     get spawnRate() { return this._spawnRate }
     set spawnRate(val) { this._spawnRate = val }
 
