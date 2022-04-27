@@ -38,7 +38,6 @@ Macro.add('startTimer', {
                 $spawnAmtInput.appendTo($wrapper)
                 $("input[name='spawnRateInput']").val(variables().GolemController.spawnRate)
                 $("input[name='spawnAmtInput']").val(variables().GolemController.spawnAmt)
-                
             }
 
             $btn.prop('disabled', true)
