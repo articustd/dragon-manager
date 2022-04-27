@@ -1,19 +1,22 @@
 import { logger } from "@util/Logging";
-import { addUpdate } from "./gameloop";
+import { GameObject } from "../GameEngine/gameobjects/gameobject";
+import { addUpdate } from "../GameEngine/mainloop";
 
-export class GolemController {
-    population = 1
-    spawnRate = 1
-    spawnAmt = 1
-    currSpawnRate;
+export class GolemController extends GameObject {
+    _population = 1
+    _spawnRate = 1
+    _spawnAmt = 1
+    _currSpawnRate;
 
     constructor() {
+        super()
+
         if (variables().population)
             this.population = variables().population
         else
             variables().population = this.population
 
-        this.currSpawnRate = this.spawnRate
+        this._currSpawnRate = this._spawnRate
         this.start()
     }
 
@@ -26,32 +29,23 @@ export class GolemController {
         if (this.currSpawnRate <= 0) {
             this.currSpawnRate = this.spawnRate
             this.population += this.spawnAmt
-            this.popListener(this.population)
-            variables().population = this.population
         }
     }
 
-    end = () => {
-
-    }
-
-    get population() { return this.population }
+    get population() { return this._population }
     set population(val) {
-        this.population = val
-        popListener(val)
+        this._population = val
+        variables().population = val
+        this.popListener(val)
     }
 
-    set spawnAmt(val) { this.spawnAmt = val }
-
-    updatePop = (val) => { this.population = val }
     popListener = (val) => { }
     registerNewPopListener = (externalListenerFunction) => { this.popListener = externalListenerFunction }
-    // get currSpawnTime() {return this.currSpawnTime}
-    // set currSpawnTime(x) {this.currSpawnTime = x}
-    get spawnRate() { return this.spawnRate }
-    set spawnRate(val) { this.spawnRate = val }
+    get currSpawnRate() {return this._currSpawnRate}
+    set currSpawnRate(x) {this._currSpawnRate = x}
+    get spawnRate() { return this._spawnRate }
+    set spawnRate(val) { this._spawnRate = val }
 
-    get spawnAmt() { return this.spawnAmt }
-    set spawnAmt(val) { this.spawnAmt = val }
+    get spawnAmt() { return this._spawnAmt }
+    set spawnAmt(val) { this._spawnAmt = val }
 }
-

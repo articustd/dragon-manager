@@ -1,0 +1,5 @@
+:: devRate [noreturn]
+<h1>Ticker Editor</h1>
+<<startTimer>>
+
+<<link "Return" $return>><</link>>
