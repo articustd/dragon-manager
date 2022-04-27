@@ -1,8 +1,7 @@
 import { logger } from "@util/Logging";
-import { GameObject } from "../GameEngine/gameobjects/gameobject";
 import { addUpdate } from "../GameEngine/mainloop";
 
-export class GolemController extends GameObject {
+export class GolemController {
     _population = 1
     _spawnRate = 1
     _spawnAmt = 1
