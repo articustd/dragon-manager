@@ -27,7 +27,7 @@ Macro.add('startTimer', {
         $btn.click(() => {
             if (!variables().GolemController) {
                 variables().GolemController = new GolemController()
-                // variables().GolemController.name = 'Golems'
+                variables().GolemController.name = 'Golems'
 
                 variables().GolemController.registerNewPopListener((val) => {
                     $('#popCount').text(val)
