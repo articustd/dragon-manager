@@ -8,7 +8,7 @@ export class GolemController {
     _currSpawnRate;
 
     constructor() {
-        super()
+        // super()
 
         if (variables().population)
             this.population = variables().population
