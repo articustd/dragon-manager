@@ -3,7 +3,7 @@ name: Build Test Deployment
 on:
   push:
     branches:
-      - 'dev/*'
+      - 'phaser'
 
 jobs:
   build:
@@ -33,4 +33,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./dist
-          destination_dir: test
+          destination_dir: phaser

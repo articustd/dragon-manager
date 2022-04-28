@@ -1,4 +1,4 @@
-import { getTickInterval, setTickInterval } from "@js/GameEngine/mainloop"
+import { getTickInterval, setTickInterval } from "@GameEngine/Core"
 import { GolemController } from "@controller/golem"
 import { logger } from "@util/Logging"
 

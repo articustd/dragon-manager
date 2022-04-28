@@ -1,4 +1,4 @@
-import { startGame } from '@js/GameEngine/mainloop';
+import { startGame } from '@GameEngine/Core';
 import storyConfig from './config.json'
 import golemTemplate from './template/golemTemplate'
 import startTimer from './macro/startTimer'
