@@ -1,59 +1,39 @@
-import { getTickInterval, setTickInterval } from "@GameEngine/Core"
-import { GolemController } from "@controller/golem"
+import { getGame, getScene } from "@GameEngine/Core"
+import { GolemGameObject } from "@GameEngine/gameobjects/golem"
 import { logger } from "@util/Logging"
 
 Macro.add('startTimer', {
     skipArgs: false,
     handler: function () {
-        let $btn = $('<button/>').wiki(`Start Golem Spawner`)
+        let golem = getScene('StartGame').golem
+        let $btn = $('<button/>').text(`${golem.active ? 'Stop' : 'Start'} Golem Spawner`)
         let $wrapper = $('<div/>')
-        let $tickLabel = $('<label/>').attr('for', 'tickInput').wiki('Frames Per Tick: ')
-        let $tickinput = $('<input/>').attr('type', 'number').attr('name', 'tickInput').val(getTickInterval()).change(function () {
-            setTickInterval(Number($(this).val()))
-        })
-
+        
+        golem.on('popChange', function (pop) { $('#popCount').text(pop) })
         let $spawnRateInput = $('<div/>')
             .append($('<label/>').attr('for', 'spawnRateInput').wiki('Spawn Rate (# of Ticks to Spawn): '))
-            .append($('<input/>').attr('type', 'number').attr('name', 'spawnRateInput').val((variables().GolemController)?variables().GolemController.spawnRate:0).change(function () {
-                variables().GolemController.spawnRate = Number($(this).val())
+            .append($('<input/>').attr('type', 'number').attr('name', 'spawnRateInput').val(golem.spawnRate).change(function () {
+                golem.spawnRate = Number($(this).val())
             }))
 
         let $spawnAmtInput = $('<div/>')
             .append($('<label/>').attr('for', 'spawnAmtInput').wiki('Spawn Amt (# of Golems to Spawn): '))
-            .append($('<input/>').attr('type', 'number').attr('name', 'spawnAmtInput').val((variables().GolemController)?variables().GolemController.spawnAmt:0).change(function () {
-                variables().GolemController.spawnAmt = Number($(this).val())
+            .append($('<input/>').attr('type', 'number').attr('name', 'spawnAmtInput').val(golem.spawnAmt).change(function () {
+                golem.spawnAmt = Number($(this).val())
             }))
 
         $btn.click(() => {
-            if (!variables().GolemController) {
-                variables().GolemController = new GolemController()
-                variables().GolemController.name = 'Golems'
-
-                variables().GolemController.registerNewPopListener((val) => {
-                    $('#popCount').text(val)
-                })
-                logger($("div > div > div "))
-               
-                $spawnRateInput.appendTo($wrapper) 
-                $spawnAmtInput.appendTo($wrapper)
-                $("input[name='spawnRateInput']").val(variables().GolemController.spawnRate)
-                $("input[name='spawnAmtInput']").val(variables().GolemController.spawnAmt)
-            }
-
-            $btn.prop('disabled', true)
+            golem.setActive(!golem.active)
+            $btn.text(`${golem.active ? 'Stop' : 'Start'} Golem Spawner`)
         })
 
-        $btn.prop('disabled', variables().GolemController)
-
-        $('<div/>').wiki('Game is running at 30 FPS Max, 30 Frames Per Tick = 1 Second <br/><br/>').appendTo(this.output)
+        $('<div/>').wiki('Game is running at 60 FPS Max, 1 Frame = 1 Tick. 60 Ticks = 1 Second. <br/><br/>').appendTo(this.output)
         $wrapper.append($('<div/>').wiki(`Current Population: `).append($('<span/>').attr('id', 'popCount').wiki(`?golemPop`)))
         $wrapper.append($('<br/>'))
-        $wrapper.append($tickLabel)
-        $wrapper.append($tickinput)
-        if (variables().GolemController) {
-            $spawnRateInput.appendTo($wrapper) 
-            $spawnAmtInput.appendTo($wrapper)
-        }
+
+        $spawnRateInput.appendTo($wrapper)
+        $spawnAmtInput.appendTo($wrapper)
+
         $wrapper.appendTo(this.output)
         $btn.appendTo(this.output)
 

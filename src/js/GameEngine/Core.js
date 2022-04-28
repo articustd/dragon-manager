@@ -1,76 +1,53 @@
 import { logger } from '@util/Logging';
+import Phaser from 'phaser'
 import _ from 'lodash'
+import { StartGame } from './scenes/StartGame';
+import { GolemPlugin } from '@GameEngine/gameobjects/golem';
 
-var lastFrameTimeMs = 0, // The last time the loop was run
-    maxFPS = 30, // The maximum FPS we want to allow
-    timestep = 1000 / 30,
-    delta = 0,
-    fps = 60,
-    framesThisSecond = 0,
-    lastFpsUpdate = 0,
-    tick = 0,
-    tickInterval = 30,
-    tickProgress = 0,
-    updates = []
+const myCustomCanvas = document.createElement('canvas');
 
-function mainLoop(timestamp) {
-    if (timestamp < lastFrameTimeMs + (1000 / maxFPS)) {
-        requestAnimationFrame(mainLoop)
-        return;
-    }
+myCustomCanvas.id = 'myCustomCanvas';
+myCustomCanvas.style = 'border: 8px solid green';
 
-    delta += timestamp - lastFrameTimeMs // get delta time since last frame
-    lastFrameTimeMs = timestamp
+document.body.appendChild(myCustomCanvas);
 
-    if (timestamp > lastFpsUpdate + 1000) { // update every second
-        fps = 0.25 * framesThisSecond + (1 - 0.25) * fps // new fps
+//  It's important to set the WebGL context values that Phaser needs:
+const contextCreationConfig = {
+    alpha: false,
+    depth: false,
+    antialias: true,
+    premultipliedAlpha: true,
+    stencil: true,
+    preserveDrawingBuffer: false,
+    failIfMajorPerformanceCaveat: false,
+    powerPreference: 'default'
+};
 
-        lastFpsUpdate = timestamp
-        framesThisSecond = 0
-    }
-    framesThisSecond++
+const myCustomContext = myCustomCanvas.getContext('webgl', contextCreationConfig);
 
-    let numUpdateSteps = 0
-    while (delta >= timestep) {
-        tickProgress += 1
-        if (tickProgress >= tickInterval) {
-            update(delta)
-            tickProgress = 0
-        }
-        delta -= timestep
-        if (++numUpdateSteps >= 240) { // sanity check
-            panic() // fix state
-            break // bail
-        }
-    }
-
-    // draw()
-    requestAnimationFrame(mainLoop)
+let phaserConfig = {
+    type: Phaser.WEBGL,
+    width: 1,
+    height: 1,
+    canvas: myCustomCanvas,
+    context: myCustomContext,
+    fps: {
+        target: 30
+    },
+    plugins: {
+        global: [
+            { key: 'GolemPlugin', plugin: GolemPlugin, start: true}
+        ]
+    },
+    scene: StartGame
 }
 
-function update(delta) {
-    tick += 1
+const game = new Phaser.Game(phaserConfig)
 
-    _.each(updates, (func) => {
-        func(delta)
-    })
-
-    logger(`Tick: ${tick}`)
+export function getGame() {
+    return game
 }
 
-function panic() {
-    logger(`PANIC`)
-    delta = 0 // discard unsimulated time
-    // do anything else that needs to bring state up to where it needs to be
+export function getScene(scene) {
+    return game.scene.getScene(scene)
 }
-
-export function startGame() {
-    requestAnimationFrame(mainLoop)
-}
-
-export function addUpdate(update) {
-    updates.push(update)
-}
-
-export function getTickInterval() { return tickInterval }
-export function setTickInterval(val) { tickInterval = val }

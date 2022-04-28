@@ -1,5 +1,6 @@
+import { getScene } from "@GameEngine/Core";
 import { logger } from "@util/Logging";
 
 Template.add('golemPop', function() {
-    return variables().population
+    return getScene('StartGame').golem.population
 })
