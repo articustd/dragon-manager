@@ -1,10 +1,13 @@
 // import { startGame } from '@GameEngine/Core';
 import storyConfig from './config.json'
-import golemTemplate from './template/golemTemplate'
-import startTimer from './macro/startTimer'
+
+import macros from './macro'
+import templates from './template'
+
 import * as Core from './GameEngine/Core'
 import { logger } from '@util/Logging'
 import { loadGameData, saveGameData } from '@GameEngine/utils'
+
 Config = { ...Config, ...storyConfig };
 setup.ImagePath = "assets/";
 

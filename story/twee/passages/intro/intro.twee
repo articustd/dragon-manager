@@ -3,4 +3,4 @@
 
 Intro Text, Story Elements, much wow
 
-<<button "Play" "main">><</button>>
+<<button "Play" "main">><<gameStart>><</button>>

@@ -1,2 +1,3 @@
 :: main {"position":"150,550","size":"100,100"}
 <h1>Main Hub</h1>
+<<golemPopBar>>Golem Population: <<golemPopCounter>><</golemPopBar>>

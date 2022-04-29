@@ -1,4 +1,11 @@
 sugarcube-2:
   macros:
-    startTimer:
-      name: startTimer
+    timerDebug:
+      name: timerDebug
+    gameStart:
+      name: gameStart
+    golemPopCounter:
+      name: golemPopCounter
+    golemPopBar:
+      name: golemPopBar
+      container: true
