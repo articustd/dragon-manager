@@ -14,4 +14,12 @@ export class StartGame extends Scene {
     }
 
     update() { }
+
+    toJSON() {
+        return { golem: this.golem.toJSON() }
+    }
+
+    loadData(data) {
+        this.golem.loadData(data.golem)
+    }
 }

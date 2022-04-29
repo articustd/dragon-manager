@@ -1,7 +1,7 @@
 import { logger } from "@util/Logging";
-import Phaser from "phaser";
+import { GameObjects, Plugins } from "phaser";
 
-export class GolemGameObject extends Phaser.GameObjects.GameObject {
+export class GolemGameObject extends GameObjects.GameObject {
     _population
     spawnRate
     spawnAmt
@@ -31,11 +31,26 @@ export class GolemGameObject extends Phaser.GameObjects.GameObject {
         }
     }
 
+    toJSON() {
+        let json = super.toJSON()
+        return { ...json, active: this.active, population: this.population, spawnAmt: this.spawnAmt, spawnRate: this.spawnRate, currSpawnRate: this.currSpawnRate }
+    }
+
+    loadData(data) {
+        if (data) {
+            this.active = data.active
+            this.population = data.population
+            this.spawnAmt = data.spawnAmt
+            this.spawnRate = data.spawnRate
+            this.currSpawnRate = data.currSpawnRate
+        }
+    }
+
     get population() { return this._population }
     set population(population) { this._population = population; this.emit('popChange', population); }
 }
 
-export class GolemPlugin extends Phaser.Plugins.BasePlugin {
+export class GolemPlugin extends Plugins.BasePlugin {
     constructor(pluginManager) {
         super(pluginManager)
 
