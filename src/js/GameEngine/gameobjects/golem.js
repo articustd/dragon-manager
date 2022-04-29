@@ -10,11 +10,7 @@ export class GolemGameObject extends GameObjects.GameObject {
     constructor(scene) {
         super(scene, 'golem')
 
-        if (variables().population)
-            this._population = variables().population
-        else
-            this._population = 1
-
+        this._population = 1
         this.spawnRate = 60
         this.spawnAmt = 1
         this.currSpawnRate = this.spawnRate
