@@ -8,7 +8,7 @@ Macro.add('startTimer', {
         let golem = getScene('StartGame').golem
         let $btn = $('<button/>').text(`${golem.active ? 'Stop' : 'Start'} Golem Spawner`)
         let $wrapper = $('<div/>')
-        logger(getScene('StartGame').sys.updateList.getActive()[0].toJSON())
+        
         golem.on('popChange', function (pop) { $('#popCount').text(pop) })
         let $spawnRateInput = $('<div/>')
             .append($('<label/>').attr('for', 'spawnRateInput').wiki('Spawn Rate (# of Ticks to Spawn): '))

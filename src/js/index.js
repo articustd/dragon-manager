@@ -29,7 +29,6 @@ setup.ImagePath = "assets/";
 	});
 
 	Save.onSave.add(function (save, details) {
-		logger({ save, details })
 		switch (details.type) {
 			case 'serialize':
 				logger('serialize')
