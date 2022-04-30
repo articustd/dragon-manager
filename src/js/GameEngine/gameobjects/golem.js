@@ -32,12 +32,13 @@ export class GolemGameObject extends GameObjects.GameObject {
 
     toJSON() {
         let json = super.toJSON()
-        return { ...json, active: this.active, population: this.population, spawnAmt: this.spawnAmt, spawnRate: this.spawnRate, currSpawnRate: this.currSpawnRate }
+        return { ...json, active: this.active, population: this.population, spawnAmt: this.spawnAmt, spawnRate: this.spawnRate, currSpawnRate: this.currSpawnRate, available: this.available }
     }
 
     loadData(data) {
         if (data) {
             this.active = data.active
+            this.available = data.available
             this.population = data.population
             this.spawnAmt = data.spawnAmt
             this.spawnRate = data.spawnRate
@@ -48,11 +49,11 @@ export class GolemGameObject extends GameObjects.GameObject {
     get population() { return this._population }
     set population(population) { this._population = population; this.emit('popChange', population); }
 
-    get available() {return this._available}
-    set available(available) {this._available = available; this.emit('availablePopChange', available)}
+    get available() { return this._available }
+    set available(available) { this._available = available; this.emit('availablePopChange', available) }
 
     get currSpawnRate() { return this._currSpawnRate }
-    set currSpawnRate(currSpawnRate) { this._currSpawnRate = currSpawnRate; this.emit('popTick', {currSpawnRate: this.currSpawnRate, spawnRate: this.spawnRate}); }
+    set currSpawnRate(currSpawnRate) { this._currSpawnRate = currSpawnRate; this.emit('popTick', { currSpawnRate: this.currSpawnRate, spawnRate: this.spawnRate }); }
 }
 
 export class GolemPlugin extends Plugins.BasePlugin {

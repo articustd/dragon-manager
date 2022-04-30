@@ -38,7 +38,7 @@ export class BaseResource extends GameObjects.GameObject {
 
     toJSON(data) {
         let json = super.toJSON()
-        return { ...json, active: this.active, total: this.total, spawnAmount: this.spawnAmount, spawnRate: this.spawnRate, tick: this.tick, ...data }
+        return { ...json, ...data, active: this.active, total: this.total, spawnAmount: this.spawnAmount, spawnRate: this.spawnRate, tick: this.tick, workers: this.workers }
     }
 
     loadData(data) {
@@ -48,6 +48,7 @@ export class BaseResource extends GameObjects.GameObject {
             this.spawnAmount = data.spawnAmount
             this.spawnRate = data.spawnRate
             this.tick = data.tick
+            this.workers = data.workers
         }
     }
 }
