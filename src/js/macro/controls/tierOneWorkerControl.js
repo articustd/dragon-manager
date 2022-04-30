@@ -8,7 +8,7 @@ Macro.add('tierOneWorkerControl', {
         let golem = getScene('StartGame').golem
         let $container = $('<div/>').css({ 'width': '70px', 'height': '30px' })
         let $subBtn = $('<button/>').append($('<i/>').addClass('fa fa-minus')).css({ 'margin-right': '10px', 'border-radius': '5px' }).prop('disabled', resource.workers <= 0)
-        let $addBtn = $('<button/>').append($('<i/>').addClass('fa fa-plus')).css({ 'border-radius': '5px' })
+        let $addBtn = $('<button/>').append($('<i/>').addClass('fa fa-plus')).css({ 'border-radius': '5px' }).prop('disabled', golem.available <= 0)
 
         $subBtn.click(() => {
             resource.workers -= 1
