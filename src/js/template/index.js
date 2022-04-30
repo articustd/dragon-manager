@@ -1,1 +1,1 @@
-import * as golemTemplate from './golemTemplate'
+import golemTemplate from './golemTemplate'

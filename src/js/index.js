@@ -1,10 +1,9 @@
-// import { startGame } from '@GameEngine/Core';
 import storyConfig from './config.json'
 
 import macros from './macro'
 import templates from './template'
 
-import * as Core from './GameEngine/Core'
+import Core from './GameEngine/Core'
 import { logger } from '@util/Logging'
 import { loadGameData, saveGameData } from '@GameEngine/utils'
 
@@ -15,7 +14,7 @@ setup.ImagePath = "assets/";
 	$(document.head).append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">')
 	// Set State Variables
 	variables().debug = Config.debug
-
+	
 	// Register custom SugarCube macros
 	// registerAlert(Macro, Dialog);
 
@@ -26,6 +25,7 @@ setup.ImagePath = "assets/";
 	// registerHeader($document);
 
 	// Setup noreturn
+
 	$document.on(':passagestart', function (ev) {
 		if (!ev.passage.tags.includes('noreturn'))
 			variables().return = ev.passage.title;

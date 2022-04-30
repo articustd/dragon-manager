@@ -1,4 +1,13 @@
-:: start {"position":"150,550","size":"100,100"}
+// :: Preload [script]
+// // Lock the screen and save the ID
+// var lockID = LoadScreen.lock();
+
+// // Pause for 5 second before unlocking the screen
+// setTimeout(function(){
+//     LoadScreen.unlock(lockID);
+// }, 5000);
+
+:: Start {"position":"150,550","size":"100,100"}
 <h1>Village</h1>
 
 @@color:red;

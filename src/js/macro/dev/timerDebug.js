@@ -5,6 +5,7 @@ Macro.add('timerDebug', {
     skipArgs: false,
     handler: function () {
         let golem = getScene('StartGame').golem
+        let tierOneResource = getScene('StartGame').tierOneResource
         let $btn = $('<button/>').text(`${golem.active ? 'Stop' : 'Start'} Golem Spawner`)
         let $wrapper = $('<div/>')
         

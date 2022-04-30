@@ -1,4 +1,5 @@
 import bars from './bars'
+import controls from './controls'
 import counters from './counters'
 import dev from './dev'
 
