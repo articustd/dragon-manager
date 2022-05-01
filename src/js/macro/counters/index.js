@@ -1,4 +1,2 @@
-import golemAvailableCounter from './golemAvailableCounter'
-import golemPopCounter from './golemPopCounter'
-import tierOneResourceCounter from './tierOneResourceCounter'
-import tierOneWorkerCounter from './tierOneWorkerCounter'
+import golemCounter from './golem'
+import tierOneResourceCounters from './tierOneResource'
