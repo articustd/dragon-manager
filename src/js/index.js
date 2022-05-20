@@ -6,6 +6,7 @@ import templates from './template'
 import Core, { game } from './GameEngine/Core'
 import { logger } from '@util/Logging'
 import { loadGameData, saveGameData } from '@GameEngine/utils'
+import { showGUI } from './resourceUI'
 Config = {
 	...Config, ...storyConfig, saves: {
 		autoload: checkAutoload(),
@@ -36,6 +37,8 @@ setup.ImagePath = "assets/";
 	$document.on(':passagestart', function (ev) {
 		if (!ev.passage.tags.includes('noreturn'))
 			variables().return = ev.passage.title;
+		if (!ev.passage.tags.includes('nohud') && !$('#hud').length) 
+			showGUI()
 	});
 
 	// Config saving

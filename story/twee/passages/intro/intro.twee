@@ -1,6 +1,6 @@
-:: intro {"position":"150,550","size":"100,100"}
+:: intro [nohud] {"position":"150,550","size":"100,100"}
 <h1>Intro</h1>
 
 Intro Text, Story Elements, much wow
 
-<<button "Play" "main">><<gameStart>><</button>>
+<<button "Play" "hub">><<gameStart>><</button>>
