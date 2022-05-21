@@ -1,4 +1,4 @@
 :: door
 <h1>Door</h1>
 
-[['Return to Room'|'hub']]
+<<button "Return to Room" "hub">><</button>>

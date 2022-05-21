@@ -1,4 +1,4 @@
 :: dresser
 <h1>Dresser</h1>
 
-[['Return to Room'|'hub']]
+<<button "Return to Room" "hub">><</button>>

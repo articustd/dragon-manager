@@ -1,4 +1,4 @@
-:: hudTest
+:: hudTest [noreturn]
 <h1>Hud Test</h1>
 This is a test sentence to stretch the screen to show the HUD overlay.
 This is a test sentence to stretch the screen to show the HUD overlay.
@@ -72,3 +72,5 @@ This is a test sentence to stretch the screen to show the HUD overlay.
 This is a test sentence to stretch the screen to show the HUD overlay.
 This is a test sentence to stretch the screen to show the HUD overlay.
 This is a test sentence to stretch the screen to show the HUD overlay.
+
+<<button "Return" $return>><</button>>
