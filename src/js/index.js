@@ -6,7 +6,7 @@ import templates from './template'
 import Core, { game, getScene } from './GameEngine/Core'
 import { logger } from '@util/Logging'
 import { loadGameData, saveGameData } from '@GameEngine/utils'
-import { showGUI } from './resourceUI'
+import { showHUD } from './resourceHUD'
 Config = {
 	...Config, ...storyConfig, saves: {
 		autoload: checkAutoload(),
@@ -35,17 +35,7 @@ setup.ImagePath = "assets/";
 
 	// Setup noreturn
 	$(document).on(':passagestart', function (ev) {
-		if (!getScene('StartGame')) {
-			// Lock the screen and save the ID
-			var lockID = LoadScreen.lock();
-
-			// Pause for 0.5 seconds before unlocking the screen
-			setTimeout(function () {
-				passageStartRoutine(ev)
-				LoadScreen.unlock(lockID);
-			}, 500);
-		} else
-			passageStartRoutine(ev)
+		loadPhaser(LoadScreen.lock(), ev)
 	});
 
 	// Config saving
@@ -77,5 +67,14 @@ function passageStartRoutine(ev) {
 	if (!ev.passage.tags.includes('noreturn'))
 		variables().return = ev.passage.title;
 	if (!ev.passage.tags.includes('nohud') && !$('#hud').length)
-		showGUI()
+		showHUD()
+}
+
+function loadPhaser(lockID, ev) {
+	if (!getScene('StartGame'))
+		setTimeout(loadPhaser.bind(null, lockID, ev), 50)
+	else {
+		passageStartRoutine(ev)
+		LoadScreen.unlock(lockID)
+	}
 }
