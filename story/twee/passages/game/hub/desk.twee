@@ -1,4 +1,8 @@
 :: desk
 <h1>Desk</h1>
 
+
+Available Workers: <<golemAvailableCounter>>
+Tier One Workers: <<tierOneWorkerCounter>> <<tierOneWorkerControl>>
+
 [['Return to Room'|'hub']]
