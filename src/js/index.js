@@ -3,7 +3,7 @@ import storyConfig from './config.json'
 import macros from './macro'
 import templates from './template'
 
-import Core, { game } from './GameEngine/Core'
+import Core, { game, getScene } from './GameEngine/Core'
 import { logger } from '@util/Logging'
 import { loadGameData, saveGameData } from '@GameEngine/utils'
 import { showGUI } from './resourceUI'
@@ -34,11 +34,18 @@ setup.ImagePath = "assets/";
 	})
 
 	// Setup noreturn
-	$document.on(':passagestart', function (ev) {
-		if (!ev.passage.tags.includes('noreturn'))
-			variables().return = ev.passage.title;
-		if (!ev.passage.tags.includes('nohud') && !$('#hud').length) 
-			showGUI()
+	$(document).on(':passagestart', function (ev) {
+		if (!getScene('StartGame')) {
+			// Lock the screen and save the ID
+			var lockID = LoadScreen.lock();
+
+			// Pause for 0.5 seconds before unlocking the screen
+			setTimeout(function () {
+				passageStartRoutine(ev)
+				LoadScreen.unlock(lockID);
+			}, 500);
+		} else
+			passageStartRoutine(ev)
 	});
 
 	// Config saving
@@ -64,4 +71,11 @@ setup.ImagePath = "assets/";
 
 function checkAutoload() {
 	return State.passage !== 'Start' && !_.isEmpty(State.passage) && Save.autosave.ok()
+}
+
+function passageStartRoutine(ev) {
+	if (!ev.passage.tags.includes('noreturn'))
+		variables().return = ev.passage.title;
+	if (!ev.passage.tags.includes('nohud') && !$('#hud').length)
+		showGUI()
 }
