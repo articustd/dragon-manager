@@ -37,6 +37,7 @@ function createRectClickArea(ns, passage, x, y, width, height) {
     rect.setAttributeNS(null, 'opacity', '0')
     rect.setAttributeNS(null, 'width', width)
     rect.setAttributeNS(null, 'height', height)
+    rect.classList.add('loc')
 
     a.appendChild(rect)
 
