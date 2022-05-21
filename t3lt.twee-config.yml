@@ -20,3 +20,5 @@ sugarcube-2:
       name: golemAvailableCounter
     tierOneWorkerCounter:
       name: tierOneWorkerCounter
+    hubMap:
+      name: hubMap
