@@ -7,6 +7,7 @@ export class StartGame extends Scene {
     autosaveTick
     golem
     resources
+    buildings
 
     constructor() {
         super("StartGame")
@@ -20,6 +21,9 @@ export class StartGame extends Scene {
             this.add.resource('Basic'),
             this.add.resource('Complex')
         ]
+        this.buildings = [
+            this.add.building({name: 'Gathering Hub', cost: [{resource: 'Basic', amount: 1}]})
+        ]
     }
 
     update() {
@@ -32,7 +36,8 @@ export class StartGame extends Scene {
 
     toJSON() {
         let resources = _.map(this.resources, (resource)=>{return resource.toJSON()})
-        return { golem: this.golem.toJSON(), resources }
+        let buildings = _.map(this.buildings, (building)=>{return building.toJSON()})
+        return { golem: this.golem.toJSON(), resources, buildings }
     }
 
     loadData(data) {
@@ -40,9 +45,16 @@ export class StartGame extends Scene {
         _.each(this.resources, (resource)=>{
             resource.loadData(_.find(data.resources, {name:resource.name}))
         })
+        _.each(this.buildings, (building)=>{
+            building.loadData(_.find(data.buildings, {name:building.name}))
+        })
     }
 
     getResource(name) {
         return _.find(this.resources, {name})
+    }
+
+    getBuilding(name) {
+        return _.find(this.buildings, {name})
     }
 }

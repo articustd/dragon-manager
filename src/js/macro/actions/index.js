@@ -1,0 +1,1 @@
+import findResourceAction from './findResourceAction'

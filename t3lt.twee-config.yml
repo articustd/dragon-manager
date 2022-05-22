@@ -22,3 +22,8 @@ sugarcube-2:
       name: resourceWorkerCounter
     hubMap:
       name: hubMap
+    buyBuildingControl:
+      name: buyBuildingControl
+      container: true
+    findResourceAction:
+      name: findResourceAction

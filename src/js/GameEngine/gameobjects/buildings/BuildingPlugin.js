@@ -8,5 +8,5 @@ export class BuildingPlugin extends Plugins.BasePlugin {
         pluginManager.registerGameObject('building', this.building)
     }
 
-    building() { return this.updateList.add(new BaseBuilding(this.scene)) }
+    building(buildingData) { return this.updateList.add(new BaseBuilding(this.scene, buildingData)) }
 }

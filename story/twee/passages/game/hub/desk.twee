@@ -1,6 +1,7 @@
 :: desk
 <h1>Desk</h1>
 Available Workers: <<golemAvailableCounter>>
-Basic Workers: <<resourceWorkerCounter 'Basic'>> <<resourceWorkerControl 'Basic'>>
+<<buyBuildingControl 'Gathering Hub'>>Basic Workers: <<resourceWorkerCounter 'Basic'>> <<resourceWorkerControl 'Basic'>><</buyBuildingControl>>
+<<findResourceAction 'Basic' 10>>
 
 <<button "Return to Room" "hub">><</button>>

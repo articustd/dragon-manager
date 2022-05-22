@@ -1,3 +1,4 @@
+import actions from './actions'
 import bars from './bars'
 import controls from './controls'
 import counters from './counters'

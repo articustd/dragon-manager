@@ -3,6 +3,6 @@
         "controls": true,
         "maxStates": 2
     },
-    "debug": false,
+    "debug": true,
     "logging": true
 }
