@@ -1,6 +1,6 @@
 :: desk
 <h1>Desk</h1>
 Available Workers: <<golemAvailableCounter>>
-Tier One Workers: <<tierOneWorkerCounter>> <<tierOneWorkerControl>>
+Basic Workers: <<resourceWorkerCounter 'Basic'>> <<resourceWorkerControl 'Basic'>>
 
 <<button "Return to Room" "hub">><</button>>

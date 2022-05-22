@@ -9,16 +9,16 @@ sugarcube-2:
     golemPopBar:
       name: golemPopBar
       container: true
-    tierOneResourceCounter:
-      name: tierOneResourceCounter
-    tierOneResoureBar:
-      name: tierOneResoureBar
+    resourceCounter:
+      name: resourceCounter
+    resourceBar:
+      name: resourceBar
       container: true
-    tierOneWorkerControl:
-      name: tierOneWorkerControl
+    resourceWorkerControl:
+      name: resourceWorkerControl
     golemAvailableCounter:
       name: golemAvailableCounter
-    tierOneWorkerCounter:
-      name: tierOneWorkerCounter
+    resourceWorkerCounter:
+      name: resourceWorkerCounter
     hubMap:
       name: hubMap

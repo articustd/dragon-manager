@@ -3,6 +3,7 @@ import { WEBGL, Game } from 'phaser'
 import { StartGame } from './scenes/StartGame';
 import { GolemPlugin } from '@GameEngine/gameobjects/golem';
 import { ResourcePlugin } from './gameobjects/resources/ResourcePlugin';
+import { BuildingPlugin } from './gameobjects/buildings/BuildingPlugin';
 
 const myCustomCanvas = document.createElement('canvas');
 
@@ -37,7 +38,8 @@ let phaserConfig = {
     plugins: {
         global: [
             { key: 'GolemPlugin', plugin: GolemPlugin, start: true },
-            { key: 'ResourcePlugin', plugin: ResourcePlugin, start: true }
+            { key: 'ResourcePlugin', plugin: ResourcePlugin, start: true },
+            { key: 'BuildingPlugin', plugin: BuildingPlugin, start: true}
         ]
     },
     scene: StartGame

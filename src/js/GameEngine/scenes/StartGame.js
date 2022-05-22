@@ -1,11 +1,12 @@
 import { GolemGameObject } from "@GameEngine/gameobjects/golem";
+import { BaseResource } from "@GameEngine/gameobjects/resources/BaseResource";
 import { logger } from "@util/Logging";
 import { Scene } from "phaser";
 
 export class StartGame extends Scene {
     autosaveTick
     golem
-    tierOneResource
+    resources
 
     constructor() {
         super("StartGame")
@@ -15,7 +16,10 @@ export class StartGame extends Scene {
 
     create() {
         this.golem = this.add.golem()
-        this.tierOneResource = this.add.tierOneResource()
+        this.resources = [
+            this.add.resource('Basic'),
+            this.add.resource('Complex')
+        ]
     }
 
     update() {
@@ -27,11 +31,18 @@ export class StartGame extends Scene {
     }
 
     toJSON() {
-        return { golem: this.golem.toJSON(), tierOneResource: this.tierOneResource.toJSON() }
+        let resources = _.map(this.resources, (resource)=>{return resource.toJSON()})
+        return { golem: this.golem.toJSON(), resources }
     }
 
     loadData(data) {
         this.golem.loadData(data.golem)
-        this.tierOneResource.loadData(data.tierOneResource)
+        _.each(this.resources, (resource)=>{
+            resource.loadData(_.find(data.resources, {name:resource.name}))
+        })
+    }
+
+    getResource(name) {
+        return _.find(this.resources, {name})
     }
 }

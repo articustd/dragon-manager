@@ -9,10 +9,3 @@ Template.add('golemPop', function() {
     return getScene('StartGame').golem.population
 })
 
-Template.add('tierOneResourceTotal', function() {
-    return getScene('StartGame').tierOneResource.total
-})
-
-Template.add('tierOneWorkerTotal', function() {
-    return getScene('StartGame').tierOneResource.workers
-})

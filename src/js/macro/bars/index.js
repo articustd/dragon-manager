@@ -1,2 +1,2 @@
 import golemPopBar from './golemPopBar'
-import tierOneResourceBar from './tierOneResourceBar'
+import resourceBar from './resourceBar'

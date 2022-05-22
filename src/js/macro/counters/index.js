@@ -1,2 +1,2 @@
 import golemCounter from './golem'
-import tierOneResourceCounters from './tierOneResource'
+import resourceCounters from './resource'

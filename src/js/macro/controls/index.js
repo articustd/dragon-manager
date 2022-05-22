@@ -1,1 +1,1 @@
-import tierOneWorkerControl from './tierOneWorkerControl'
+import resourceWorkerControl from './resourceWorkerControl'

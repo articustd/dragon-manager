@@ -72,7 +72,7 @@ function passageStartRoutine(ev) {
 
 function loadPhaser(lockID, ev) {
 	if (!getScene('StartGame'))
-		setTimeout(loadPhaser.bind(null, lockID, ev), 50)
+		setTimeout(loadPhaser, 50, lockID, ev)
 	else {
 		passageStartRoutine(ev)
 		LoadScreen.unlock(lockID)

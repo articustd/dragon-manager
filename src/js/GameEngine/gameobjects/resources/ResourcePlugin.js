@@ -1,12 +1,11 @@
 import { Plugins } from "phaser"
-import { TierOneResource } from "./TierOneResource"
+import { BaseResource } from "./BaseResource"
 
 export class ResourcePlugin extends Plugins.BasePlugin {
     constructor(pluginManager) {
         super(pluginManager)
 
-        pluginManager.registerGameObject('tierOneResource', this.createTierOneResource)
+        pluginManager.registerGameObject('resource', this.createResource)
     }
-
-    createTierOneResource() { return this.updateList.add(new TierOneResource(this.scene)) }
+    createResource(resourceName) {return this.updateList.add(new BaseResource(this.scene, resourceName))}
 }
