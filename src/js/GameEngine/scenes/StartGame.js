@@ -22,7 +22,7 @@ export class StartGame extends Scene {
             this.add.resource('Complex')
         ]
         this.buildings = [
-            this.add.building({name: 'Gathering Hub', cost: [{resource: 'Basic', amount: 1}]})
+            this.add.building({name: 'Gathering Hub', cost: [{resource: 'Basic', amount: 11}]})
         ]
     }
 
