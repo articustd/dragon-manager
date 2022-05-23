@@ -8,6 +8,7 @@ export class StartGame extends Scene {
     golem
     resources
     buildings
+    actions
 
     constructor() {
         super("StartGame")
@@ -24,6 +25,9 @@ export class StartGame extends Scene {
         this.buildings = [
             this.add.building({name: 'Gathering Hub', cost: [{resource: 'Basic', amount: 11}]})
         ]
+        this.actions = [
+            this.add.action({name: 'Gather Basic', baseCooldown: 600, resource: 'Basic', amount: 10})
+        ]
     }
 
     update() {
@@ -37,7 +41,8 @@ export class StartGame extends Scene {
     toJSON() {
         let resources = _.map(this.resources, (resource)=>{return resource.toJSON()})
         let buildings = _.map(this.buildings, (building)=>{return building.toJSON()})
-        return { golem: this.golem.toJSON(), resources, buildings }
+        let actions = _.map(this.actions, (action)=>{return action.toJSON()})
+        return { golem: this.golem.toJSON(), resources, buildings, actions }
     }
 
     loadData(data) {
@@ -48,6 +53,9 @@ export class StartGame extends Scene {
         _.each(this.buildings, (building)=>{
             building.loadData(_.find(data.buildings, {name:building.name}))
         })
+        _.each(this.actions, (action)=>{
+            action.loadData(_.find(data.actions, {name:action.name}))
+        })
     }
 
     getResource(name) {
@@ -56,5 +64,9 @@ export class StartGame extends Scene {
 
     getBuilding(name) {
         return _.find(this.buildings, {name})
+    }
+
+    getAction(name) {
+        return _.find(this.actions, {name})
     }
 }

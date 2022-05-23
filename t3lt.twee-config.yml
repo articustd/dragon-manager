@@ -27,3 +27,5 @@ sugarcube-2:
       container: true
     findResourceAction:
       name: findResourceAction
+    gatherResourceAction:
+      name: gatherResourceAction

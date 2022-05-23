@@ -1,4 +1,6 @@
 :: door
 <h1>Door</h1>
 
+<<gatherResourceAction "Gather Basic">>
+
 <<button "Return to Room" "hub">><</button>>
