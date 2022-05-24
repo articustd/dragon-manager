@@ -33,3 +33,6 @@ sugarcube-2:
       name: deskList
     deskCommands:
       name: deskCommands
+    hideUntilBuilt:
+      name: hideUntilBuilt
+      container: true

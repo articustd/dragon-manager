@@ -20,7 +20,7 @@ export class BaseBuilding extends GameObjects.GameObject {
     preUpdate() {}
 
     get purchased() { return this._purchased }
-    set purchased(purchased) { this._purchased = purchased; this.emit(`${this.name}PurchasedChange`, purchased); }
+    set purchased(purchased) { this._purchased = purchased; this.emit(`PurchasedChange`, purchased); }
 
     toJSON(data) {
         let json = super.toJSON()
