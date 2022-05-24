@@ -5,7 +5,7 @@ Macro.add('timerDebug', {
     skipArgs: false,
     handler: function () {
         let golem = getScene('StartGame').golem
-        let tierOneResource = getScene('StartGame').tierOneResource
+        let basicResource = getScene('StartGame').getResource('Basic')
         let $btn = $('<button/>').text(`${golem.active ? 'Stop' : 'Start'} Golem Spawner`)
         let $wrapper = $('<div/>')
 
@@ -21,10 +21,10 @@ Macro.add('timerDebug', {
                 golem.spawnAmt = Number($(this).val())
             }))
 
-        let $tierOneSpawnRateInput = $('<div/>')
-            .append($('<label/>').attr('for', 'tierOneSpawnRateInput').wiki('Tier One Spawn Rate: '))
-            .append($('<input/>').attr('type', 'number').attr('name', 'tierOneSpawnRateInput').val(tierOneResource.spawnRate).change(function () {
-                tierOneResource.spawnRate = Number($(this).val())
+        let $basicSpawnRateInput = $('<div/>')
+            .append($('<label/>').attr('for', 'basicSpawnRateInput').wiki('Basic Spawn Rate: '))
+            .append($('<input/>').attr('type', 'number').attr('name', 'basicSpawnRateInput').val(basicResource.spawnRate).change(function () {
+                basicResource.spawnRate = Number($(this).val())
             }))
 
         $btn.click(() => {
@@ -40,7 +40,7 @@ Macro.add('timerDebug', {
         $spawnAmtInput.appendTo($wrapper)
         $wrapper.append($('<br/>'))
 
-        $tierOneSpawnRateInput.appendTo($wrapper)
+        $basicSpawnRateInput.appendTo($wrapper)
 
         $wrapper.appendTo(this.output)
         $btn.appendTo(this.output)

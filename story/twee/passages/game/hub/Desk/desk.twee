@@ -3,4 +3,9 @@
 Available Workers: <<golemAvailableCounter>>
 <<buyBuildingControl 'Gathering Hub'>>Basic Workers: <<resourceWorkerCounter 'Basic'>> <<resourceWorkerControl 'Basic'>><</buyBuildingControl>>
 
+<div class="desk-wrapper">
+    <<deskList>>
+    <<deskCommands>>
+</div>
+
 <<button "Return to Room" "hub">><</button>>

@@ -1,0 +1,41 @@
+@import '../twine/theme';
+
+.desk-wrapper {
+    // border: 2px solid;
+    display: flex;
+    flex-direction: row;
+}
+
+.desk-list {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+
+    & button {
+        margin: 5px;
+        height: 40px;
+    }
+}
+
+.desk-commands {
+    // border: 2px solid blue;
+    display: none;
+    flex-direction: row;
+    flex: 4;
+
+    & .items {
+        // border: 2px solid yellow;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        & button {
+            margin: 5px;
+            height: 40px;
+        }
+    }
+
+    &.desk-visable {
+        display: flex;
+    }
+}

@@ -29,3 +29,7 @@ sugarcube-2:
       name: findResourceAction
     gatherResourceAction:
       name: gatherResourceAction
+    deskList:
+      name: deskList
+    deskCommands:
+      name: deskCommands

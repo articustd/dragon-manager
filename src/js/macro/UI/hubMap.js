@@ -1,4 +1,3 @@
-
 Macro.add('hubMap', {
     skipArgs: false,
     handler: function () {
