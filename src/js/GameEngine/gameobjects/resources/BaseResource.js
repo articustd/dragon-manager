@@ -1,4 +1,5 @@
 import { logger } from "@util/Logging";
+import _ from "lodash";
 import { GameObjects } from "phaser";
 
 export class BaseResource extends GameObjects.GameObject {
@@ -7,8 +8,9 @@ export class BaseResource extends GameObjects.GameObject {
     spawnRate
     _tick
     _workers
+    maxAmount
 
-    constructor(scene, resource) {
+    constructor(scene, resource, maxAmount) {
         super(scene, 'Resource')
 
         this.name = resource
@@ -17,6 +19,8 @@ export class BaseResource extends GameObjects.GameObject {
         this.spawnRate = 60
         this._tick = 0
         this._workers = 0
+        if (maxAmount)
+            this.maxAmount = maxAmount
     }
 
     preUpdate() {
@@ -36,9 +40,42 @@ export class BaseResource extends GameObjects.GameObject {
     get workers() { return this._workers }
     set workers(workers) { this._workers = workers; this.emit(`${this.name}WorkerChange`, workers); }
 
+    spend(amt) {
+        if (this.total >= amt) {
+            this.total -= amt
+            return true
+        }
+        return false
+    }
+
+    get(amt) {
+        if (this.enoughSpace(amt)) {
+            this.total += amt
+            return true
+        }
+        return false
+    }
+
+    enoughAvailable(amt) {
+        return this.total >= amt
+    }
+
+    enoughSpace(amt) {
+        return (!_.isNull(this.maxAmount) && (this.maxAmount - this.total) >= amt) || _.isNull(this.maxAmount)
+    }
+
     toJSON(data) {
         let json = super.toJSON()
-        return { ...json, ...data, active: this.active, total: this.total, spawnAmount: this.spawnAmount, spawnRate: this.spawnRate, tick: this.tick, workers: this.workers }
+        return {
+            ...json, ...data,
+            active: this.active,
+            total: this.total,
+            spawnAmount: this.spawnAmount,
+            spawnRate: this.spawnRate,
+            tick: this.tick,
+            workers: this.workers,
+            maxAmount: this.maxAmount
+        }
     }
 
     loadData(data) {
@@ -49,6 +86,7 @@ export class BaseResource extends GameObjects.GameObject {
             this.spawnRate = data.spawnRate
             this.tick = data.tick
             this.workers = data.workers
+            this.maxAmount = data.maxAmount
         }
     }
 }

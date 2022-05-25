@@ -7,5 +7,5 @@ export class ResourcePlugin extends Plugins.BasePlugin {
 
         pluginManager.registerGameObject('resource', this.createResource)
     }
-    createResource(resourceName) {return this.updateList.add(new BaseResource(this.scene, resourceName))}
+    createResource(resourceName, maxAmount) {return this.updateList.add(new BaseResource(this.scene, resourceName, maxAmount))}
 }

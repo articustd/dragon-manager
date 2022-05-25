@@ -36,3 +36,5 @@ sugarcube-2:
     hideUntilBuilt:
       name: hideUntilBuilt
       container: true
+    spendResourceAction:
+      name: spendResourceAction

@@ -1,3 +1,6 @@
 export * from './hubMap'
 export * from './desk'
 export * from './hideUntilBuilt'
+export * from './bars'
+export * from './controls'
+export * from './counters'

@@ -8,7 +8,7 @@ Macro.add('findResourceAction', {
         let $button = $('<button/>').wiki(`Get ${amount} ${resourceName}`)
 
         $button.click(()=>{
-            resource.total += amount
+            resource.get(amount)
         })
 
         $(this.output).append($button)

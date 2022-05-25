@@ -19,6 +19,7 @@ export class StartGame extends Scene {
     create() {
         this.golem = this.add.golem()
         this.resources = [
+            this.add.resource('Mana', 100),
             this.add.resource('Basic'),
             this.add.resource('Complex')
         ]

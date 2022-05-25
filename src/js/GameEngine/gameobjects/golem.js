@@ -7,6 +7,7 @@ export class GolemGameObject extends GameObjects.GameObject {
     spawnRate
     spawnAmt
     _currSpawnRate
+    _developmentLevel
 
     constructor(scene) {
         super(scene, 'golem')
@@ -16,6 +17,7 @@ export class GolemGameObject extends GameObjects.GameObject {
         this.spawnRate = 600
         this.spawnAmt = 1
         this._currSpawnRate = 0
+        this._developmentLevel = 0
         this.active = false
     }
 
@@ -30,9 +32,58 @@ export class GolemGameObject extends GameObjects.GameObject {
         }
     }
 
+    get population() { return this._population }
+    set population(population) { this._population = population; this.emit('popChange', population); }
+
+    get available() { return this._available }
+    set available(available) { this._available = available; this.emit('availablePopChange', available) }
+
+    get currSpawnRate() { return this._currSpawnRate }
+    set currSpawnRate(currSpawnRate) { this._currSpawnRate = currSpawnRate; this.emit('popTick', { currSpawnRate: this.currSpawnRate, spawnRate: this.spawnRate }); }
+
+    get developmentLevel() { return this._developmentLevel }
+    set developmentLevel(developmentLevel) { this._developmentLevel = developmentLevel; this.emit('DevelopmentLevelChange', developmentLevel); }
+
+    spend(amt) {
+        if(this.enoughAvailable(amt)) {
+            this.population -= amt
+            return true
+        }
+        return false
+    }
+
+    get(amt) {
+        this.population += amt
+        return true
+    }
+
+    enoughAvailable(amt) {
+        return (this.population - amt) >= 1
+    }
+
+    enoughSpace() {
+        return true
+    }
+
+    getDevelopment() {
+        switch(this.developmentLevel) {
+            case 1:
+                return 'Cave Dwellers'
+            default:
+                return
+        }
+    }
+
     toJSON() {
         let json = super.toJSON()
-        return { ...json, active: this.active, population: this.population, spawnAmt: this.spawnAmt, spawnRate: this.spawnRate, currSpawnRate: this.currSpawnRate, available: this.available }
+        return { ...json, 
+            active: this.active, 
+            population: this.population, 
+            spawnAmt: this.spawnAmt, 
+            spawnRate: this.spawnRate, 
+            currSpawnRate: this.currSpawnRate, 
+            available: this.available,
+            developmentLevel: this.developmentLevel }
     }
 
     loadData(data) {
@@ -43,17 +94,9 @@ export class GolemGameObject extends GameObjects.GameObject {
             this.spawnAmt = data.spawnAmt
             this.spawnRate = data.spawnRate
             this.currSpawnRate = data.currSpawnRate
+            this.developmentLevel = data.developmentLevel
         }
     }
-
-    get population() { return this._population }
-    set population(population) { this._population = population; this.emit('popChange', population); }
-
-    get available() { return this._available }
-    set available(available) { this._available = available; this.emit('availablePopChange', available) }
-
-    get currSpawnRate() { return this._currSpawnRate }
-    set currSpawnRate(currSpawnRate) { this._currSpawnRate = currSpawnRate; this.emit('popTick', { currSpawnRate: this.currSpawnRate, spawnRate: this.spawnRate }); }
 }
 
 export class GolemPlugin extends Plugins.BasePlugin {
