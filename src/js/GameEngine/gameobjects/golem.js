@@ -33,6 +33,13 @@ export class GolemGameObject extends GameObjects.GameObject {
         }
     }
 
+    timeskip(ticks) {
+        while(ticks > 0) {
+            --ticks
+            this.preUpdate()
+        }
+    }
+
     get population() { return this._population }
     set population(population) { this._population = population; this.emit('popChange', population); }
 

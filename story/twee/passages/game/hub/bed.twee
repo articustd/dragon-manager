@@ -1,4 +1,6 @@
 :: bed
 <h1>Bed</h1>
 
+<<sleepAction 8>>
+
 <<button "Return to Room" "hub">><</button>>

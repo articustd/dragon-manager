@@ -1,3 +1,5 @@
+import { getTicks, hoursToMinutes } from "@GameEngine/utils/tickTime";
+import { logger } from "@util/Logging";
 import _ from "lodash";
 import { GameObjects } from "phaser";
 
@@ -27,6 +29,16 @@ export class BaseAction extends GameObjects.GameObject {
     gatherResource() { 
         this.cooldown = 0
         this.scene.getResource(this.resource).total += this.amount
+    }
+
+    timeSkipHour(hours) {
+        this.timeSkipMinute(hoursToMinutes(hours))
+    }
+
+    timeSkipMinute(minutes) {
+        let ticks = getTicks(minutes)
+        this.scene.golem.timeskip(ticks)
+        _.each(this.scene.resources, (resource)=>{logger(resource);resource.timeskip(ticks)})
     }
 
     toJSON(data) {

@@ -1,4 +1,3 @@
-import { saveGameData } from './save'
-import { loadGameData } from './load'
-
-export { saveGameData, loadGameData }
+export { saveGameData } from './save'
+export { loadGameData } from './load'
+export { getTicks, hoursToMinutes } from './tickTime'

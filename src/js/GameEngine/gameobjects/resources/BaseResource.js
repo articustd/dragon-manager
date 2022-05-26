@@ -16,7 +16,7 @@ export class BaseResource extends GameObjects.GameObject {
         this.name = resource
         this._total = 0
         this.spawnAmount = 1
-        this.spawnRate = 60
+        this.spawnRate = 600
         this._tick = 0
         this._workers = 0
         if (maxAmount)
@@ -28,6 +28,13 @@ export class BaseResource extends GameObjects.GameObject {
         if (this.tick >= this.spawnRate) {
             this.tick -= this.spawnRate
             this.total += this.spawnAmount
+        }
+    }
+
+    timeskip(ticks) {
+        while(ticks > 0) {
+            --ticks
+            this.preUpdate()
         }
     }
 

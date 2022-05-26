@@ -27,7 +27,8 @@ export class StartGame extends Scene {
             this.add.building({name: 'Gathering Hub', cost: [{resource: 'Basic', amount: 11}]})
         ]
         this.actions = [
-            this.add.action({name: 'Gather Basic', baseCooldown: 600, resource: 'Basic', amount: 10})
+            this.add.action({name: 'Gather Basic', baseCooldown: 600, resource: 'Basic', amount: 10}),
+            this.add.action({name: 'Sleep'})
         ]
     }
 
