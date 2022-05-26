@@ -12,6 +12,7 @@ export class GolemGameObject extends GameObjects.GameObject {
     constructor(scene) {
         super(scene, 'golem')
 
+        this.name = 'Golem'
         this._population = 1
         this._available = this._population
         this.spawnRate = 600
