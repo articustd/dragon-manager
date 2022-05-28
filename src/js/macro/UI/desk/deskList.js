@@ -6,13 +6,13 @@ Macro.add('deskList', {
         $('<div/>').addClass('desk-list')
             .append(createListButton('construction'))
             .append(createListButton('interact'))
-            .append(createListButton('command'))
+            // .append(createListButton('command'))
             .appendTo(this.output)
     }
 })
 
 function createListButton(name) {
-    let $btn = $('<button/>').wiki(_.upperFirst(name))
+    let $btn = $('<button/>').attr('id', name).wiki(_.upperFirst(name))
     let panelId = `desk-${name}`
 
     $btn.click(() => {

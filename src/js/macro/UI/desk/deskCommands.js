@@ -10,13 +10,13 @@ Macro.add('deskCommands', {
             .append($empty)
             .append(getConstructionCommands())
             .append(getInteractCommands())
-            .append(getCommandCommands())
+        // .append(getCommandCommands())
     }
 })
 
 function getConstructionCommands() {
     let { $wrapper, $leftPanel, $rightPanel } = createPanels('desk-construction')
-    
+
     _.each(getNonPurchasedBuildings(), (building) => {
         building.on('PurchasedChange', (purchased) => { if (purchased) assignPanel() })
     })
@@ -24,13 +24,15 @@ function getConstructionCommands() {
     function assignPanel() {
         $leftPanel.empty()
         $rightPanel.empty()
-        $leftPanel.wiki(`<<button 'Upgrade Community'>><</button>>`)
+        // $leftPanel.wiki(`<<button 'Upgrade Community'>><</button>>`)
         _.each(getNonPurchasedBuildings(), ({ name }, idx) => {
             if (idx % 2)
-                $leftPanel.wiki(`<<buyBuildingControl '${name}'>><</buyBuildingControl>>`)
-            else
                 $rightPanel.wiki(`<<buyBuildingControl '${name}'>><</buyBuildingControl>>`)
+            else
+                $leftPanel.wiki(`<<buyBuildingControl '${name}'>><</buyBuildingControl>>`)
         })
+        if ($leftPanel.is(':empty') && $leftPanel.is(':empty'))
+            $leftPanel.wiki('All buildings constructed')
     }
 
     function getNonPurchasedBuildings() {
@@ -38,9 +40,8 @@ function getConstructionCommands() {
     }
 
     assignPanel()
-    // $leftPanel.wiki(`<<button 'Market'>><</button>>`)
-    // $rightPanel.wiki(`<<button 'Library'>><</button>>`)
-    // $leftPanel.wiki(`<<button 'Clinic'>><</button>>`)
+    if ($leftPanel.is(':empty') && $leftPanel.is(':empty'))
+        $leftPanel.wiki('All buildings constructed')
     return $wrapper
 }
 

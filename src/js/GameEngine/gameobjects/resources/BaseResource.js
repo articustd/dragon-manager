@@ -24,10 +24,12 @@ export class BaseResource extends GameObjects.GameObject {
     }
 
     preUpdate(t, dt) {
-        this.tick += this.workers
+        if(this.workers>0)
+            this.tick += 1
+            
         if (this.tick >= this.spawnRate) {
             this.tick -= this.spawnRate
-            this.total += this.spawnAmount
+            this.total += this.workers
         }
     }
 

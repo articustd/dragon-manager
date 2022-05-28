@@ -29,7 +29,7 @@ export class BaseBuilding extends GameObjects.GameObject {
 
     loadData(data) {
         if(data) {
-            this._purchased = data.purchased
+            this.purchased = data.purchased
         }
     }
 }

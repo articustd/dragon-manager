@@ -1,6 +1,7 @@
 :: StoryBanner {"position":"250,125"}
 
 :: StorySubtitle {"position":"375,0"}
+$version
 
 :: StoryCaption {"position":"25,550","size":"100,100"}
 

@@ -1,9 +1,9 @@
 :: bedsideTable
 <h1>Bedside Table</h1>
+You see the spell book that you found in the woods out back. The clasp is sealed shut and you're unable to open it at this moment.
 
-<<spendResourceAction "golem" 1 "Mana" 1 "Convert Golem">>
-<<spendResourceAction "golem" 10 "Mana" 10 "Convert 10 Golems">>
-
-<<findResourceAction 'Mana' -10>>
-
+Maybe in the future you'll be able to use it.
+/* <<spendResourceAction "golem" 1 "Mana" 1 "Convert Golem">>
+<<spendResourceAction "golem" 10 "Mana" 10 "Convert 10 Golems">> */
+/* <<findResourceAction 'Mana' -10>> */
 <<button "Return to Room" "hub">><</button>>

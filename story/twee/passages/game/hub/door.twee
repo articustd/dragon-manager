@@ -1,6 +1,9 @@
 :: door
 <h1>Door</h1>
+It's the door to your studio apartment. Maybe you can look around outside and find some resources for your golem friends?
 
 <<gatherResourceAction "Gather Basic">>
+<<hideUntilBuilt "Gathering Hut">><<gatherResourceAction "Gather Complex">><</hideUntilBuilt>>
+<<hideUntilBuilt "Workshop">><<gatherResourceAction "Gather Advanced">><</hideUntilBuilt>>
 
 <<button "Return to Room" "hub">><</button>>
