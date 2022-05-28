@@ -2,27 +2,28 @@ import { logger } from "@util/Logging";
 import { GameObjects, Plugins } from "phaser";
 
 export class GolemGameObject extends GameObjects.GameObject {
-    _population
     _available
-    spawnRate
-    spawnAmt
     _currSpawnRate
     _developmentLevel
+    _population
+    spawnAmt
+    spawnRate
 
     constructor(scene) {
         super(scene, 'golem')
 
         this.name = 'Golem'
+        this.active = false
+
         this._population = 1
         this._available = this._population
         this.spawnRate = 600
         this.spawnAmt = 1
         this._currSpawnRate = 0
         this._developmentLevel = 0
-        this.active = false
     }
 
-    preUpdate() {
+    preUpdate(t, dt) {
         if (this.available > 0)
             this.currSpawnRate += 1
 
@@ -34,7 +35,7 @@ export class GolemGameObject extends GameObjects.GameObject {
     }
 
     timeskip(ticks) {
-        while(ticks > 0) {
+        while (ticks > 0) {
             --ticks
             this.preUpdate()
         }
@@ -53,7 +54,7 @@ export class GolemGameObject extends GameObjects.GameObject {
     set developmentLevel(developmentLevel) { this._developmentLevel = developmentLevel; this.emit('DevelopmentLevelChange', developmentLevel); }
 
     spend(amt) {
-        if(this.enoughAvailable(amt)) {
+        if (this.enoughAvailable(amt)) {
             this.population -= amt
             return true
         }
@@ -74,24 +75,40 @@ export class GolemGameObject extends GameObjects.GameObject {
     }
 
     getDevelopment() {
-        switch(this.developmentLevel) {
+        switch (this.developmentLevel) {
+            case 0:
+                return 'None'
             case 1:
-                return 'Cave Dwellers'
+                return 'Autonomous'
+            case 2:
+                return 'Primitive'
+            case 3:
+                return 'Simple'
+            case 4:
+                return 'Medieval'
+            case 5:
+                return 'Industrial'
+            case 6:
+                return 'Modern'
+            case 7:
+                return 'Futuristic'
             default:
-                return
+                return 'Broken'
         }
     }
 
     toJSON() {
         let json = super.toJSON()
-        return { ...json, 
-            active: this.active, 
-            population: this.population, 
-            spawnAmt: this.spawnAmt, 
-            spawnRate: this.spawnRate, 
-            currSpawnRate: this.currSpawnRate, 
+        return {
+            ...json,
+            active: this.active,
+            population: this.population,
+            spawnAmt: this.spawnAmt,
+            spawnRate: this.spawnRate,
+            currSpawnRate: this.currSpawnRate,
             available: this.available,
-            developmentLevel: this.developmentLevel }
+            developmentLevel: this.developmentLevel
+        }
     }
 
     loadData(data) {

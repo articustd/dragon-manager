@@ -19,20 +19,26 @@ export class StartGame extends Scene {
     create() {
         this.golem = this.add.golem()
         this.resources = [
-            this.add.resource('Mana', 100),
+            this.add.resource('Mana', 200),
+            this.add.resource('Stamina', 100),
             this.add.resource('Basic'),
-            this.add.resource('Complex')
+            this.add.resource('Complex'),
+            this.add.resource('Advanced')
         ]
         this.buildings = [
-            this.add.building({name: 'Gathering Hub', cost: [{resource: 'Basic', amount: 11}]})
+            this.add.building({name: 'Gathering Hut', cost: [{resource: 'Basic', amount: 10}]}),
+            this.add.building({name: 'Workshop', cost: [{resource: 'Basic', amount: 250}, {resource: 'Complex', amount: 10}]}),
+            this.add.building({name: 'Factory', cost: [{resource: 'Basic', amount: 500}, {resource: 'Complex', amount: 250}, {resource: 'Advanced', amount: 10}]})
         ]
         this.actions = [
-            this.add.action({name: 'Gather Basic', baseCooldown: 600, resource: 'Basic', amount: 10}),
+            this.add.action({name: 'Gather Basic', baseCooldown: 600, resource: 'Basic', amount: 2}),
+            this.add.action({name: 'Gather Complex', baseCooldown: 1200, resource: 'Complex', amount: 2}),
+            this.add.action({name: 'Gather Advanced', baseCooldown: 2400, resource: 'Advanced', amount: 2}),
             this.add.action({name: 'Sleep'})
         ]
     }
 
-    update() {
+    update(t, dt) { // FIXME When off tab, updates are not calced, use previous time state to figure out what the new delta is and compensate
         this.autosaveTick += 1
         if(this.autosaveTick >= 3600) {
             this.autosaveTick = 0

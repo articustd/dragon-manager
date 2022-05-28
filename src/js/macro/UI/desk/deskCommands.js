@@ -13,7 +13,9 @@ Macro.add('deskCommands', {
 function getConstructionCommands() {
     let { $wrapper, $leftPanel, $rightPanel } = createPanels('desk-construction')
     $leftPanel.wiki(`<<button 'Upgrade Community'>><</button>>`)
-    $rightPanel.wiki(`<<buyBuildingControl 'Gathering Hub'>><</buyBuildingControl>>`)
+    $rightPanel.wiki(`<<buyBuildingControl 'Gathering Hut'>><</buyBuildingControl>>`)
+    $leftPanel.wiki(`<<buyBuildingControl 'Workshop'>><</buyBuildingControl>>`)
+    $rightPanel.wiki(`<<buyBuildingControl 'Factory'>><</buyBuildingControl>>`)
     $leftPanel.wiki(`<<button 'Market'>><</button>>`)
     $rightPanel.wiki(`<<button 'Library'>><</button>>`)
     $leftPanel.wiki(`<<button 'Clinic'>><</button>>`)

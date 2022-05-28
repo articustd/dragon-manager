@@ -1,7 +1,7 @@
 :: desk
 <h1>Desk</h1>
 Available Workers: <<golemAvailableCounter>>
-Basic Workers: <<resourceWorkerCounter 'Basic'>> <<hideUntilBuilt 'Gathering Hub'>><<resourceWorkerControl 'Basic'>><</hideUntilBuilt>>
+Basic Workers: <<resourceWorkerCounter 'Basic'>> <<hideUntilBuilt 'Gathering Hut'>><<resourceWorkerControl 'Basic'>><</hideUntilBuilt>>
 
 <div class="desk-wrapper">
     <<deskList>>

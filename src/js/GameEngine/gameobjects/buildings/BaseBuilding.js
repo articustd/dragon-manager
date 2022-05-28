@@ -17,7 +17,7 @@ export class BaseBuilding extends GameObjects.GameObject {
 
     }
 
-    preUpdate() {}
+    preUpdate(t, dt) {}
 
     get purchased() { return this._purchased }
     set purchased(purchased) { this._purchased = purchased; this.emit(`PurchasedChange`, purchased); }

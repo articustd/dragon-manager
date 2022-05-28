@@ -18,7 +18,7 @@ export class BaseAction extends GameObjects.GameObject {
         this._cooldown = this.baseCooldown
     }
 
-    preUpdate() {
+    preUpdate(t, dt) {
         if (this.cooldown < this.baseCooldown)
             this.cooldown += 1
     }

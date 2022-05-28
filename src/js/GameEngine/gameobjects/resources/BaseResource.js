@@ -3,12 +3,12 @@ import _ from "lodash";
 import { GameObjects } from "phaser";
 
 export class BaseResource extends GameObjects.GameObject {
-    _total
-    spawnAmount
-    spawnRate
     _tick
+    _total
     _workers
     maxAmount
+    spawnAmount
+    spawnRate
 
     constructor(scene, resource, maxAmount) {
         super(scene, 'Resource')
@@ -23,7 +23,7 @@ export class BaseResource extends GameObjects.GameObject {
             this.maxAmount = maxAmount
     }
 
-    preUpdate() {
+    preUpdate(t, dt) {
         this.tick += this.workers
         if (this.tick >= this.spawnRate) {
             this.tick -= this.spawnRate
