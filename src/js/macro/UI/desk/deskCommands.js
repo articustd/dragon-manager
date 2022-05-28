@@ -1,3 +1,7 @@
+import { getScene } from "@GameEngine/Core"
+import { logger } from "@util/Logging"
+import _ from "lodash"
+
 Macro.add('deskCommands', {
     skipArgs: false,
     handler: function () {
@@ -12,13 +16,31 @@ Macro.add('deskCommands', {
 
 function getConstructionCommands() {
     let { $wrapper, $leftPanel, $rightPanel } = createPanels('desk-construction')
-    $leftPanel.wiki(`<<button 'Upgrade Community'>><</button>>`)
-    $rightPanel.wiki(`<<buyBuildingControl 'Gathering Hut'>><</buyBuildingControl>>`)
-    $leftPanel.wiki(`<<buyBuildingControl 'Workshop'>><</buyBuildingControl>>`)
-    $rightPanel.wiki(`<<buyBuildingControl 'Factory'>><</buyBuildingControl>>`)
-    $leftPanel.wiki(`<<button 'Market'>><</button>>`)
-    $rightPanel.wiki(`<<button 'Library'>><</button>>`)
-    $leftPanel.wiki(`<<button 'Clinic'>><</button>>`)
+    
+    _.each(getNonPurchasedBuildings(), (building) => {
+        building.on('PurchasedChange', (purchased) => { if (purchased) assignPanel() })
+    })
+
+    function assignPanel() {
+        $leftPanel.empty()
+        $rightPanel.empty()
+        $leftPanel.wiki(`<<button 'Upgrade Community'>><</button>>`)
+        _.each(getNonPurchasedBuildings(), ({ name }, idx) => {
+            if (idx % 2)
+                $leftPanel.wiki(`<<buyBuildingControl '${name}'>><</buyBuildingControl>>`)
+            else
+                $rightPanel.wiki(`<<buyBuildingControl '${name}'>><</buyBuildingControl>>`)
+        })
+    }
+
+    function getNonPurchasedBuildings() {
+        return _.filter(getScene('StartGame').buildings, { purchased: false })
+    }
+
+    assignPanel()
+    // $leftPanel.wiki(`<<button 'Market'>><</button>>`)
+    // $rightPanel.wiki(`<<button 'Library'>><</button>>`)
+    // $leftPanel.wiki(`<<button 'Clinic'>><</button>>`)
     return $wrapper
 }
 
@@ -54,6 +76,6 @@ function getCommandCommands() {
 function createPanels(id) {
     let $leftPanel = $('<div/>').addClass(`items`)
     let $rightPanel = $('<div/>').addClass(`items`)
-    let $wrapper = $('<div/>').attr('id',id).addClass(`desk-commands`).append($leftPanel).append($rightPanel)
+    let $wrapper = $('<div/>').attr('id', id).addClass(`desk-commands`).append($leftPanel).append($rightPanel)
     return { $wrapper, $leftPanel, $rightPanel }
 }
