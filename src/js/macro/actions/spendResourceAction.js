@@ -42,7 +42,7 @@ function findResource(resourceName) {
 
 function getEmitter(resource, callback) {
     if(resource.type === 'golem')
-        resource.on('popChange', callback)
+        resource.on('availablePopChange', callback)
     else
         resource.on(`${resource.name}TotalChange`, callback)
 }

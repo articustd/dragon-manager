@@ -40,7 +40,7 @@ export class StartGame extends Scene {
 
     update(t, dt) { // FIXME When off tab, updates are not calced, use previous time state to figure out what the new delta is and compensate
         this.autosaveTick += 1
-        if(this.autosaveTick >= 3600) {
+        if(this.autosaveTick >= 300) {
             this.autosaveTick = 0
             Save.autosave.save()
         }

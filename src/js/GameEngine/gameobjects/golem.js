@@ -29,8 +29,7 @@ export class GolemGameObject extends GameObjects.GameObject {
 
         if (this.currSpawnRate >= this.spawnRate) {
             this.currSpawnRate -= this.spawnRate
-            this.population += this.spawnAmt
-            this.available += this.spawnAmt
+            this.get(this.spawnAmt)
         }
     }
 
@@ -56,6 +55,7 @@ export class GolemGameObject extends GameObjects.GameObject {
     spend(amt) {
         if (this.enoughAvailable(amt)) {
             this.population -= amt
+            this.available -= amt
             return true
         }
         return false
@@ -63,11 +63,12 @@ export class GolemGameObject extends GameObjects.GameObject {
 
     get(amt) {
         this.population += amt
+        this.available += amt
         return true
     }
 
     enoughAvailable(amt) {
-        return (this.population - amt) >= 1
+        return (this.available - amt) >= 0 && (this.population - amt) >= 1
     }
 
     enoughSpace() {

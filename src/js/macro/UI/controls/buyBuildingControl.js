@@ -37,6 +37,6 @@ Macro.add('buyBuildingControl', {
 })
 
 function checkDisabled($button, resourcesAvailable) {
-    let disabled = _.every(resourcesAvailable, (value)=>{return !value})
+    let disabled = !_.every(resourcesAvailable, (value)=>{return value})
     $button.prop('disabled', disabled)
 }
