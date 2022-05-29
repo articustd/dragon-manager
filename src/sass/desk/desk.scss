@@ -1,41 +1,38 @@
-@import '../twine/theme';
+@use '../twine/theme';
 
-.desk-wrapper {
-    // border: 2px solid;
+.desk {
     display: flex;
-    flex-direction: row;
-}
-
-.desk-list {
-    display: flex;
-    flex-direction: column;
-    flex: 2;
-
-    & button {
-        margin: 5px;
-        height: 40px;
+    
+    &-wrapper {
+        @extend .desk;
     }
-}
 
-.desk-commands {
-    // border: 2px solid blue;
-    display: none;
-    flex-direction: row;
-    flex: 4;
-
-    & .items {
-        // border: 2px solid yellow;
-        display: flex;
+    &-list {
+        @extend .desk;
         flex-direction: column;
-        flex: 1;
+        flex: 2;
 
         & button {
-            margin: 5px;
-            height: 40px;
+            @include theme.button;
         }
     }
 
-    &.desk-visable {
-        display: flex;
+    &-commands {
+        display: none;
+        flex: 4;
+
+        & .items {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+
+            & button {
+                @include theme.button;
+            }
+        }
+
+        &.desk-visable {
+            display: flex;
+        }
     }
 }

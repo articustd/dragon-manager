@@ -1,4 +1,4 @@
-@import '../twine/theme';
+@use '../twine/theme';
 
 .hubMap {
     margin: 0 auto;
@@ -7,5 +7,5 @@
 
 .loc:hover {
     opacity: 40%;
-    fill: $hover-color;
+    fill: theme.$hover-color;
 }

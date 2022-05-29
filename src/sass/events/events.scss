@@ -1,0 +1,38 @@
+@use '../twine/theme';
+
+@mixin header {
+    align-self: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.events {
+    display: flex;
+    border: 1px solid;
+
+    &-wrapper {
+        @extend .events;
+    }
+
+    &-story {
+        @extend .events;
+        flex-direction: column;
+        flex: 5;
+        height: 40em;
+        overflow-y: auto;
+
+        &>.header {
+            @include header;
+        }
+    }
+
+    &-interactions {
+        @extend .events;
+        flex-direction: column;
+        flex: 4;
+
+        &>.header {
+            @include header;
+        }
+    }
+}
