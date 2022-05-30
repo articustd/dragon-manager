@@ -1,4 +1,4 @@
-import { game, getScene, removeScene } from "@GameEngine/Core"
+import { getScene, removeScene } from "@GameEngine/Core"
 import { logger } from "@util/Logging"
 
 Macro.add('removeScene', {

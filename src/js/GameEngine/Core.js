@@ -56,12 +56,21 @@ function getScene(scene) {
     return game.scene.getScene(scene)
 }
 
-function addEvent(autoStart, data) {
-    game.scene.add("EventInteraction", EventInteraction, autoStart, data)
+function addScene(scene, autoStart, data) {
+    game.scene.add(scene, getSceneConfig(scene), autoStart, data)
 }
 
 function removeScene(scene) {
     game.scene.remove(scene)
 }
 
-export { game, getScene, addEvent, removeScene }
+function getSceneConfig(scene) {
+    switch (scene) {
+        case 'EventInteraction':
+            return EventInteraction
+        default:
+            return StartGame
+    }
+}
+
+export { game, getScene, addScene, removeScene }

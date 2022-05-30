@@ -1,4 +1,4 @@
-import { addEvent, getScene, removeScene } from "@GameEngine/Core"
+import { addScene, getScene, removeScene } from "@GameEngine/Core"
 import { logger } from "@util/Logging"
 
 Macro.add('testSceneAdd', {
@@ -7,6 +7,6 @@ Macro.add('testSceneAdd', {
         if(getScene('EventInteraction'))
             removeScene('EventInteraction')
 
-        addEvent(true, {})
+        addScene('EventInteraction', true, {})
     }
 })
