@@ -40,3 +40,7 @@ sugarcube-2:
       name: spendResourceAction
     sleepAction:
       name: sleepAction
+    testSceneAdd:
+      name: testSceneAdd
+    removeScene:
+      name: removeScene

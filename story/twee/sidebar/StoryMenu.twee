@@ -10,5 +10,6 @@ $version
 <<link "Ticker Editor" "devRate">><</link>>
 <<if $started>>[["Hub"|'hub']]<</if>>
 <<if $started>>[["HUD Test"|'hudTest']]<</if>>
-<<if $started>>[["Event Test"|'eventScenario']]<</if>>
+/* <<if $started>>[["Event Test"|'eventScenario']]<</if>> */
+<<if $started>><<link "Event Test" "eventScenario">><<testSceneAdd>><</link>><</if>>
 /* <</if>> */

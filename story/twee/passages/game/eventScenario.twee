@@ -8,3 +8,5 @@
         <div class="header">Interactions</div>
     </div>
 </div>
+
+<<button "Return to Hub" "hub">><<removeScene "EventInteraction">><</button>>
