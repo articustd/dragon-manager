@@ -19,10 +19,10 @@ export class BaseInteraction extends GameObjects.GameObject {
     }
 
     preUpdate(t, dt) {
-        if (this.cooldown <= this.baseCooldown)
-            this.cooldown += 1
         if (this.cooldown % this.interval === 0)
             this.scene.story.push(_.sample(this.snippets))
+        if (this.cooldown <= this.baseCooldown)
+            this.cooldown += 1
     }
 
     get cooldown() { return this._cooldown }
