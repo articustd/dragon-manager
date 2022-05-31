@@ -23,3 +23,7 @@ Template.add('AdvancedResourceTotal', function() {
 Template.add('AdvancedWorkerTotal', function() {
     return getScene('StartGame').getResource('Advanced').workers
 })
+
+Template.add('EventName', function() {
+    return getScene('EventInteraction').name
+})

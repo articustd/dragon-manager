@@ -44,3 +44,7 @@ sugarcube-2:
       name: testSceneAdd
     removeScene:
       name: removeScene
+    interactionList:
+      name: interactionList
+    storyDesc:
+      name: storyDesc

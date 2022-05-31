@@ -7,6 +7,7 @@ import { ResourcePlugin } from './gameobjects/resources/ResourcePlugin';
 import { BuildingPlugin } from './gameobjects/buildings/BuildingPlugin';
 import { ActionPlugin } from './gameobjects/actions/ActionPlugin';
 import { InteractionPlugin } from './gameobjects/interactions/InteractionPlugin';
+import { StoryPlugin } from './gameobjects/story';
 
 const myCustomCanvas = document.createElement('canvas');
 
@@ -45,6 +46,7 @@ let phaserConfig = {
             { key: 'GolemPlugin', plugin: GolemPlugin, start: true },
             { key: 'InteractionPlugin', plugin: InteractionPlugin, start: true },
             { key: 'ResourcePlugin', plugin: ResourcePlugin, start: true },
+            { key: 'StoryPlugin', plugin: StoryPlugin, start: true },
         ]
     },
     scene: StartGame
