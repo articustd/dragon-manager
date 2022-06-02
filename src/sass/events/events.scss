@@ -47,6 +47,14 @@
             &::-webkit-scrollbar-thumb:hover {
                 background: #555;
             }
+
+            &>.gray {
+                background-color: #555
+            }
+
+            &>div {
+                padding: 5px;
+            }
         }
     }
 
@@ -62,6 +70,10 @@
         &>button {
             height: 40px;
             margin: 10px 20px;
+        }
+
+        &>.hide {
+            display: none;
         }
     }
 }

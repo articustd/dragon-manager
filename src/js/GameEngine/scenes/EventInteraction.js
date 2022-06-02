@@ -6,6 +6,7 @@ export class EventInteraction extends Scene {
     name
     interactions
     story
+    leadsTo
 
     constructor() {
         super("EventInteraction")
@@ -16,7 +17,7 @@ export class EventInteraction extends Scene {
         this.interactions = _.map(data.interactions, (interaction) => {
             return this.add.interaction(interaction)
         })
-        this.story = this.add.story()
+        this.story = this.add.story(data.startingDesc)
         logger(this)
     }
 

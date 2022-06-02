@@ -11,4 +11,3 @@
     </div>
 </div>
 <br/>
-<<button "Return to Hub" "hub">><<removeScene "EventInteraction">><</button>>
