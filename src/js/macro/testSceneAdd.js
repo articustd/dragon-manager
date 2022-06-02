@@ -8,8 +8,6 @@ Macro.add('testSceneAdd', {
         if (getScene('EventInteraction'))
             removeScene('EventInteraction')
 
-        
-
         addScene('EventInteraction', true, deskPickupGolem)
     }
 })

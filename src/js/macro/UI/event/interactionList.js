@@ -40,5 +40,6 @@ function calcBackgroundSize({counter, baseCounter}, $btn) {
     if(counter > 0 && baseCounter > 0) {
         let percent = _.floor((counter/baseCounter) * 100)
         $btn.css({'background-size': `${percent}% ${percent}%`})
-    }
+    } else
+        $btn.css({'background-size': `0% 0%`})
 }
