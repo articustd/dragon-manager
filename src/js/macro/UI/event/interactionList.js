@@ -27,6 +27,7 @@ Macro.add('interactionList', {
             })
 
             interaction.on(`${interaction.name}CounterChange`, (counter) => {
+                calcBackgroundSize(interaction, $btn)
                 $btn.prop('disabled', interaction.isDisabled())
             })
             $btn.prop('disabled', interaction.isDisabled())
@@ -34,3 +35,10 @@ Macro.add('interactionList', {
         })
     }
 })
+
+function calcBackgroundSize({counter, baseCounter}, $btn) {
+    if(counter > 0 && baseCounter > 0) {
+        let percent = _.floor((counter/baseCounter) * 100)
+        $btn.css({'background-size': `${percent}% ${percent}%`})
+    }
+}

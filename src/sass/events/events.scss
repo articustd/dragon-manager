@@ -70,6 +70,13 @@
         &>button {
             height: 40px;
             margin: 10px 20px;
+
+            &:disabled {
+                background: linear-gradient(#444, #444) no-repeat;
+                background-position: center;
+                background-size: 0% 0%;
+                border: 0px;
+            }
         }
 
         &>.hide {
