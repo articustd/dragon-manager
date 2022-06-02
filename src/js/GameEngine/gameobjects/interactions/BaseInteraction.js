@@ -41,7 +41,6 @@ export class BaseInteraction extends GameObjects.GameObject {
             this.scene.story.clearActiveInteractions()
         this.pushSnippet()
         this.progressOthers()
-        logger(this.scene.interactions)
     }
 
     isDisabled() {
