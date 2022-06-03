@@ -6,9 +6,11 @@ Macro.add('deskList', {
         $('<div/>').addClass('desk-list')
             .append(createListButton('construction'))
             .append(createListButton('interact'))
-            .append($('<button/>').wiki('Pickup Golem').click(()=>{
-                $.wiki(`<<startEvent "Pickup Golem">>`)
-            }))
+            .wiki(`<<startEvent 'Pickup Golem' 1>>`)
+            // .append(`<<startEvent 'Pickup Golem' 1>>`)
+            // .append($('<button/>').wiki('Pickup Golem').click(()=>{
+            //     $.wiki(`<<startEvent "Pickup Golem">>`)
+            // }))
             // .append(createListButton('command'))
             .appendTo(this.output)
     }

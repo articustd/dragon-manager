@@ -1,6 +1,7 @@
 import { GameObjects } from "phaser";
 import { logger } from "@util/Logging";
 import _ from "lodash";
+import { getScene } from "@GameEngine/Core";
 
 export class BaseInteraction extends GameObjects.GameObject {
     _cooldown
@@ -13,10 +14,12 @@ export class BaseInteraction extends GameObjects.GameObject {
     baseCounter
     progressInteractions
     final
+    consume
 
     constructor(scene, interactionData) {
         super(scene, 'Interaction')
 
+        this.consume = false
         this.clear = false
         this.final = false
         this._counter = 0
@@ -39,6 +42,8 @@ export class BaseInteraction extends GameObjects.GameObject {
     fire() {
         if (this.clear)
             this.scene.story.clearActiveInteractions()
+        if (this.consume)
+            this.scene.consumeGolems()
         this.pushSnippet()
         this.progressOthers()
     }

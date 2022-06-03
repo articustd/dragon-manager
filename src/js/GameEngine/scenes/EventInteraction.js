@@ -1,3 +1,4 @@
+import { getScene } from "@GameEngine/Core";
 import { logger } from "@util/Logging";
 import _ from "lodash";
 import { Scene } from "phaser";
@@ -7,6 +8,7 @@ export class EventInteraction extends Scene {
     interactions
     story
     leadsTo
+    golems
 
     constructor() {
         super("EventInteraction")
@@ -14,6 +16,7 @@ export class EventInteraction extends Scene {
 
     create(data) {
         this.name = data.eventName
+        this.golems = data.golems
         this.interactions = _.map(data.interactions, (interaction) => {
             return this.add.interaction(interaction)
         })
@@ -22,6 +25,10 @@ export class EventInteraction extends Scene {
     }
 
     update(t, dt) { }
+
+    consumeGolems(amt = this.golems) {
+        getScene('StartGame').golem.spend(amt)
+    }
 
     toJSON() {
         let interactions = _.map(this.interactions, (interaction) => { return interaction.toJSON() })
