@@ -1,5 +1,5 @@
 import { addScene, getScene, removeScene } from "@GameEngine/Core"
-import { deskPickupGolem } from "@js/data/events/desk/pickupGolem"
+import * as events from "@js/data/events"
 import { logger } from "@util/Logging"
 
 Macro.add('testSceneAdd', {
@@ -8,6 +8,7 @@ Macro.add('testSceneAdd', {
         if (getScene('EventInteraction'))
             removeScene('EventInteraction')
 
-        addScene('EventInteraction', true, deskPickupGolem)
+        logger(_.find(events, {eventName:'Pickup Golem'}))
+        addScene('EventInteraction', true, _.find(events, {eventName:'Pickup Golem'}))
     }
 })
