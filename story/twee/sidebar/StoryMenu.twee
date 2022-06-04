@@ -12,4 +12,5 @@ $version
 <<if $started>>[["HUD Test"|'hudTest']]<</if>>
 /* <<if $started>>[["Event Test"|'eventScenario']]<</if>> */
 <<if $started>><<link "Event Test" "eventScenario">><<testSceneAdd>><</link>><</if>>
+<<if $started>>[["Drawflow"|'drawflow']]<</if>>
 /* <</if>> */

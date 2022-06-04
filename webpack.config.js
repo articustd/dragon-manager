@@ -19,12 +19,16 @@ module.exports = {
                         presets: ['@babel/preset-env']
                     }
                 }
-            }
+            },
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
         ]
     },
     resolve: {
         alias: {
-            "@util": path.resolve(__dirname, 'src', 'js', 'controller','util'),
+            "@util": path.resolve(__dirname, 'src', 'js', 'controller', 'util'),
             "@controller": path.resolve(__dirname, 'src', 'js', 'controller'),
             "@GameEngine": path.resolve(__dirname, 'src', 'js', 'GameEngine'),
             "@js": path.resolve(__dirname, 'src', 'js')
