@@ -77,6 +77,11 @@
                 background-size: 0% 0%;
                 border: 0px;
             }
+
+            &.red{
+                background-color: #ff0000;
+                border-color: #ff4e4e;
+            }
         }
 
         &>.hide {

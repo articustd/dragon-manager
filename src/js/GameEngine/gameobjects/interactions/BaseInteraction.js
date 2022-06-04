@@ -15,6 +15,7 @@ export class BaseInteraction extends GameObjects.GameObject {
     progressInteractions
     final
     consume
+    classes
 
     constructor(scene, interactionData) {
         super(scene, 'Interaction')
