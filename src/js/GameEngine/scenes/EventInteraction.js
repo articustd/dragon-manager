@@ -9,6 +9,10 @@ export class EventInteraction extends Scene {
     story
     leadsTo
     golems
+    passives
+    passiveSnippets
+    passiveMin
+    passiveCounter
 
     constructor() {
         super("EventInteraction")
@@ -20,14 +24,41 @@ export class EventInteraction extends Scene {
         this.interactions = _.map(data.interactions, (interaction) => {
             return this.add.interaction(interaction)
         })
+        this.passives = data.passives
+        this.passiveSnippets = []
+        this.passiveMin = 600
+        this.passiveCounter = 0
         this.story = this.add.story(data.startingDesc)
         logger(this)
     }
 
-    update(t, dt) { }
+    update(t, dt) {
+        if(this.passiveSnippets.length > 0) {
+            this.passiveCounter++
+            let rand = _.random(1, 10000)
+            if (rand > 9990)
+                logger(rand)
+            if(this.passiveCounter > this.passiveMin && rand > 9990){
+                this.story.push(this.getRandomSnippet())
+                this.passiveCounter = 0
+            }
+        }
+    }
 
     consumeGolems(amt = this.golems) {
         getScene('StartGame').golem.spend(amt)
+    }
+
+    changePassiveSnippets(name) {
+        this.passiveSnippets = _.find(this.passives, {name}).snippets
+        this.passiveCounter = 0
+    }
+
+    getRandomSnippet() {
+        let snippet = _.sample(this.passiveSnippets)
+        if(snippet === _.last(this.story.storySnippets))
+            snippet = this.getRandomSnippet()
+        return snippet
     }
 
     toJSON() {

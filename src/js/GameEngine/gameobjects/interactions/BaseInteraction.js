@@ -13,6 +13,7 @@ export class BaseInteraction extends GameObjects.GameObject {
     _counter
     baseCounter
     progressInteractions
+    passive
     final
     consume
     classes
@@ -45,6 +46,8 @@ export class BaseInteraction extends GameObjects.GameObject {
             this.scene.story.clearActiveInteractions()
         if (this.consume)
             this.scene.consumeGolems()
+        if (this.passive)
+            this.scene.changePassiveSnippets(this.passive)
         this.pushSnippet()
         this.progressOthers()
     }
