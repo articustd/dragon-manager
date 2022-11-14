@@ -1,10 +1,10 @@
 :: StoryTitle
-Village
+Dragon Manager
 
 
 :: StoryData {"position":"0,125"}
 {
-	"ifid": "710FBD8F-5366-4180-B704-122E3FD9CC35",
+	"ifid": "1B653C9F-D2FD-49F7-A9E8-E0F5929C49E6",
 	"format": "SugarCube",
 	"format-version": "2.34.1",
 	"start": "Start",
