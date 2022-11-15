@@ -14,7 +14,8 @@ Config = {
 		id: 'dragon-manager',
 		isAllowed: function () { return State.passage !== 'Start' },
 		slots: 8
-	}
+	},
+	ui: { stowBarInitially: true }
 };
 
 setup.ImagePath = "assets/";
@@ -25,6 +26,7 @@ setup.ImagePath = "assets/";
 	// Set State Variables
 	variables().debug = Config.debug
 	variables().version = 'Pre-Alpha'
+	variables().dev = Config.dev
 
 	// Config Auto Load if not on Start passage
 	// Fixes Phaser not being avaliable on initial render

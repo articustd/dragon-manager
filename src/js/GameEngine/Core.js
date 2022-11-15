@@ -12,7 +12,7 @@ import { StoryPlugin } from './gameobjects/story';
 const myCustomCanvas = document.createElement('canvas');
 
 myCustomCanvas.id = 'myCustomCanvas';
-myCustomCanvas.style = 'border: 8px solid green';
+// myCustomCanvas.style = 'border: 8px solid green';
 
 document.body.appendChild(myCustomCanvas);
 

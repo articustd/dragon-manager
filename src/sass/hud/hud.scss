@@ -31,3 +31,48 @@
         justify-content: start;
     }
 }
+
+.menuButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: -90px;
+    cursor: pointer;
+    width: 75px;
+    height: 35px;
+
+    background-color: $background-color;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    >li {
+        display: flex;
+        border: 1px solid #444;
+        padding: 10px 5px;
+        justify-content: center;
+        margin: 5px 0px;
+
+        >div {
+            text-transform: uppercase;
+        }
+
+        &:hover {
+            cursor: pointer;
+
+            background-color: $background-color;
+        }
+    }
+}
+
+.menu-version {
+    text-align: right;
+}
+
+#ui-bar {
+    display: none;
+}
