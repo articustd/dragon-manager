@@ -8,7 +8,7 @@ Macro.add('testSceneAdd', {
         if (getScene('EventInteraction'))
             removeScene('EventInteraction')
 
-        logger(_.find(events, {eventName:'Pickup Golem'}))
-        addScene('EventInteraction', true, _.find(events, {eventName:'Pickup Golem'}))
+        logger(_.find(events, {eventName:'Pickup Kobold'}))
+        addScene('EventInteraction', true, _.find(events, {eventName:'Pickup Kobold'}))
     }
 })

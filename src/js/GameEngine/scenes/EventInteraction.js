@@ -8,7 +8,7 @@ export class EventInteraction extends Scene {
     interactions
     story
     leadsTo
-    golems
+    kobolds
     passives
     passiveSnippets
     passiveMin
@@ -20,7 +20,7 @@ export class EventInteraction extends Scene {
 
     create(data) {
         this.name = data.eventName
-        this.golems = data.golems
+        this.kobolds = data.kobolds
         this.interactions = _.map(data.interactions, (interaction) => {
             return this.add.interaction(interaction)
         })
@@ -45,8 +45,8 @@ export class EventInteraction extends Scene {
         }
     }
 
-    consumeGolems(amt = this.golems) {
-        getScene('StartGame').golem.spend(amt)
+    consumeKobolds(amt = this.kobolds) {
+        getScene('StartGame').kobold.spend(amt)
     }
 
     changePassiveSnippets(name) {

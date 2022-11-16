@@ -34,14 +34,14 @@ Macro.add('spendResourceAction', {
 })
 
 function findResource(resourceName) {
-    if (resourceName === 'golem')
-        return getScene('StartGame').golem
+    if (resourceName === 'kobold')
+        return getScene('StartGame').kobold
 
     return getScene('StartGame').getResource(resourceName)
 }
 
 function getEmitter(resource, callback) {
-    if(resource.type === 'golem')
+    if(resource.type === 'kobold')
         resource.on('availablePopChange', callback)
     else
         resource.on(`${resource.name}TotalChange`, callback)

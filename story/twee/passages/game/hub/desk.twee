@@ -1,8 +1,8 @@
 :: desk
 <h1>Desk</h1>
-On the desk you placed a terrarium for the golem you had accidentally summoned from the spell book.
+On the desk you placed a terrarium for the kobold you had accidentally summoned from the spell book.
 
-Basic Workers: <<resourceWorkerCounter 'Basic'>> <<hideUntilBuilt 'Gathering Hut'>><<resourceWorkerControl 'Basic'>><</hideUntilBuilt>>
+Gold Workers: <<resourceWorkerCounter 'Gold'>> <<hideUntilBuilt 'Gathering Hut'>><<resourceWorkerControl 'Gold'>><</hideUntilBuilt>>
 <<hideUntilBuilt 'Workshop'>>Complex Workers: <<resourceWorkerCounter 'Complex'>> <<resourceWorkerControl 'Complex'>><</hideUntilBuilt>>
 <<hideUntilBuilt 'Factory'>>Advanced Workers: <<resourceWorkerCounter 'Advanced'>> <<resourceWorkerControl 'Advanced'>><</hideUntilBuilt>>
 

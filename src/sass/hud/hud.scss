@@ -43,6 +43,10 @@
     height: 35px;
 
     background-color: $background-color;
+
+    &:hover {
+        background-color: $hover-color;
+    }
 }
 
 .menu-list {
@@ -52,7 +56,7 @@
 
     >li {
         display: flex;
-        border: 1px solid #444;
+        border: 1px solid $hover-color;
         padding: 10px 5px;
         justify-content: center;
         margin: 5px 0px;
@@ -64,7 +68,7 @@
         &:hover {
             cursor: pointer;
 
-            background-color: $background-color;
+            background-color: $hover-color;
         }
     }
 }

@@ -1,11 +1,11 @@
 import { getScene } from "@GameEngine/Core";
 
-Template.add('BasicResourceTotal', function() {
-    return getScene('StartGame').getResource('Basic').total
+Template.add('GoldResourceTotal', function() {
+    return getScene('StartGame').getResource('Gold').total
 })
 
-Template.add('BasicWorkerTotal', function() {
-    return getScene('StartGame').getResource('Basic').workers
+Template.add('GoldWorkerTotal', function() {
+    return getScene('StartGame').getResource('Gold').workers
 })
 
 Template.add('ComplexResourceTotal', function() {

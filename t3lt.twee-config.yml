@@ -4,10 +4,10 @@ sugarcube-2:
       name: timerDebug
     gameStart:
       name: gameStart
-    golemPopCounter:
-      name: golemPopCounter
-    golemPopBar:
-      name: golemPopBar
+    koboldPopCounter:
+      name: koboldPopCounter
+    koboldPopBar:
+      name: koboldPopBar
       container: true
     resourceCounter:
       name: resourceCounter
@@ -16,8 +16,8 @@ sugarcube-2:
       container: true
     resourceWorkerControl:
       name: resourceWorkerControl
-    golemAvailableCounter:
-      name: golemAvailableCounter
+    koboldAvailableCounter:
+      name: koboldAvailableCounter
     resourceWorkerCounter:
       name: resourceWorkerCounter
     hubMap:

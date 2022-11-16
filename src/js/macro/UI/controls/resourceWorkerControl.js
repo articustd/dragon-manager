@@ -6,23 +6,23 @@ Macro.add('resourceWorkerControl', {
     handler: function () {
         let [resourceName] = this.args
         let resource = getScene('StartGame').getResource(resourceName)
-        let golem = getScene('StartGame').golem
+        let kobold = getScene('StartGame').kobold
         let $container = $('<div/>').css({ 'width': '70px', 'height': '30px' })
         let $subBtn = $('<button/>').append($('<i/>').addClass('fa fa-minus')).css({ 'margin-right': '10px', 'border-radius': '5px' }).prop('disabled', resource.workers <= 0)
-        let $addBtn = $('<button/>').append($('<i/>').addClass('fa fa-plus')).css({ 'border-radius': '5px' }).prop('disabled', golem.available <= 0)
+        let $addBtn = $('<button/>').append($('<i/>').addClass('fa fa-plus')).css({ 'border-radius': '5px' }).prop('disabled', kobold.available <= 0)
         $subBtn.click(() => {
             resource.workers -= 1
-            golem.available += 1
+            kobold.available += 1
             $subBtn.prop('disabled', resource.workers <= 0)
         })
 
         $addBtn.click(() => {
             resource.workers += 1
-            golem.available -= 1
+            kobold.available -= 1
             $subBtn.prop('disabled', false)
         })
 
-        golem.on('availablePopChange', function (available) {
+        kobold.on('availablePopChange', function (available) {
             $addBtn.prop('disabled', available <= 0)
         })
 

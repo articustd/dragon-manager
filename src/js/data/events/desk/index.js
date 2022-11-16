@@ -1,1 +1,1 @@
-export { deskPickupGolem } from './pickupGolem'
+export { deskPickupKobold } from './pickupKobold'

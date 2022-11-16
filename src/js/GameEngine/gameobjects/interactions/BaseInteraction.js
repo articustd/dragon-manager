@@ -45,7 +45,7 @@ export class BaseInteraction extends GameObjects.GameObject {
         if (this.clear)
             this.scene.story.clearActiveInteractions()
         if (this.consume)
-            this.scene.consumeGolems()
+            this.scene.consumeKobolds()
         if (this.passive)
             this.scene.changePassiveSnippets(this.passive)
         this.pushSnippet()

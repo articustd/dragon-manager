@@ -1,11 +1,11 @@
-import { GolemGameObject } from "@GameEngine/gameobjects/golem";
+import { KoboldGameObject } from "@GameEngine/gameobjects/kobold";
 import { BaseResource } from "@GameEngine/gameobjects/resources/BaseResource";
 import { logger } from "@util/Logging";
 import { Scene } from "phaser";
 
 export class StartGame extends Scene {
     autosaveTick
-    golem
+    kobold
     resources
     buildings
     actions
@@ -17,21 +17,21 @@ export class StartGame extends Scene {
     }
 
     create() {
-        this.golem = this.add.golem()
+        this.kobold = this.add.kobold()
         this.resources = [
             this.add.resource('Mana', 200),
             this.add.resource('Stamina', 100),
-            this.add.resource('Basic'),
+            this.add.resource('Gold'),
             this.add.resource('Complex'),
             this.add.resource('Advanced')
         ]
         this.buildings = [
-            this.add.building({ name: 'Gathering Hut', cost: [{ resource: 'Basic', amount: 10 }] }),
-            this.add.building({ name: 'Workshop', cost: [{ resource: 'Basic', amount: 250 }, { resource: 'Complex', amount: 10 }] }),
-            this.add.building({ name: 'Factory', cost: [{ resource: 'Basic', amount: 500 }, { resource: 'Complex', amount: 250 }, { resource: 'Advanced', amount: 10 }] })
+            this.add.building({ name: 'Gathering Hut', cost: [{ resource: 'Gold', amount: 10 }] }),
+            this.add.building({ name: 'Workshop', cost: [{ resource: 'Gold', amount: 250 }, { resource: 'Complex', amount: 10 }] }),
+            this.add.building({ name: 'Factory', cost: [{ resource: 'Gold', amount: 500 }, { resource: 'Complex', amount: 250 }, { resource: 'Advanced', amount: 10 }] })
         ]
         this.actions = [
-            this.add.action({ name: 'Gather Basic', baseCooldown: 600, resource: 'Basic', amount: 2 }),
+            this.add.action({ name: 'Gather Gold', baseCooldown: 600, resource: 'Gold', amount: 2 }),
             this.add.action({ name: 'Gather Complex', baseCooldown: 1200, resource: 'Complex', amount: 2 }),
             this.add.action({ name: 'Gather Advanced', baseCooldown: 2400, resource: 'Advanced', amount: 2 }),
             this.add.action({ name: 'Sleep' })
@@ -50,11 +50,11 @@ export class StartGame extends Scene {
         let resources = _.map(this.resources, (resource) => { return resource.toJSON() })
         let buildings = _.map(this.buildings, (building) => { return building.toJSON() })
         let actions = _.map(this.actions, (action) => { return action.toJSON() })
-        return { golem: this.golem.toJSON(), resources, buildings, actions }
+        return { kobold: this.kobold.toJSON(), resources, buildings, actions }
     }
 
     loadData(data) {
-        this.golem.loadData(data.golem)
+        this.kobold.loadData(data.kobold)
         _.each(this.resources, (resource) => {
             resource.loadData(_.find(data.resources, { name: resource.name }))
         })

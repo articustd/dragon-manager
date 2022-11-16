@@ -1,7 +1,7 @@
 import { logger } from "@util/Logging";
 import { GameObjects, Plugins } from "phaser";
 
-export class GolemGameObject extends GameObjects.GameObject {
+export class KoboldGameObject extends GameObjects.GameObject {
     _available
     _currSpawnRate
     _developmentLevel
@@ -10,9 +10,9 @@ export class GolemGameObject extends GameObjects.GameObject {
     spawnRate
 
     constructor(scene) {
-        super(scene, 'golem')
+        super(scene, 'kobold')
 
-        this.name = 'Golem'
+        this.name = 'Kobold'
         this.active = false
 
         this._population = 1
@@ -125,12 +125,12 @@ export class GolemGameObject extends GameObjects.GameObject {
     }
 }
 
-export class GolemPlugin extends Plugins.BasePlugin {
+export class KoboldPlugin extends Plugins.BasePlugin {
     constructor(pluginManager) {
         super(pluginManager)
 
-        pluginManager.registerGameObject('golem', this.createGolem)
+        pluginManager.registerGameObject('kobold', this.createKobold)
     }
 
-    createGolem() { return this.updateList.add(new GolemGameObject(this.scene)) }
+    createKobold() { return this.updateList.add(new KoboldGameObject(this.scene)) }
 }

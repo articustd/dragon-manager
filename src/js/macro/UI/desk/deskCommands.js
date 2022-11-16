@@ -47,15 +47,15 @@ function getConstructionCommands() {
 
 function getInteractCommands() {
     let { $wrapper, $leftPanel, $rightPanel } = createPanels('desk-interact')
-    $leftPanel.wiki(`<<button 'Inspect Golems'>><</button>>`)
-    $rightPanel.wiki(`<<button 'Pick Up Golems'>><</button>>`)
-    $leftPanel.wiki(`<<button 'Play With Golems'>><</button>>`)
-    $rightPanel.wiki(`<<button 'Taste Golem'>><</button>>`)
-    $leftPanel.wiki(`<<button 'Eat Golem'>><</button>>`)
-    $rightPanel.wiki(`<<button 'Step on Golems'>><</button>>`)
-    $leftPanel.wiki(`<<button 'Put Golems in Shoes'>><</button>>`)
-    $rightPanel.wiki(`<<button 'Put Golems in Underwear'>><</button>>`)
-    $leftPanel.wiki(`<<button 'Masturbate With Golems'>><</button>>`)
+    $leftPanel.wiki(`<<button 'Inspect Kobolds'>><</button>>`)
+    $rightPanel.wiki(`<<button 'Pick Up Kobolds'>><</button>>`)
+    $leftPanel.wiki(`<<button 'Play With Kobolds'>><</button>>`)
+    $rightPanel.wiki(`<<button 'Taste Kobold'>><</button>>`)
+    $leftPanel.wiki(`<<button 'Eat Kobold'>><</button>>`)
+    $rightPanel.wiki(`<<button 'Step on Kobolds'>><</button>>`)
+    $leftPanel.wiki(`<<button 'Put Kobolds in Shoes'>><</button>>`)
+    $rightPanel.wiki(`<<button 'Put Kobolds in Underwear'>><</button>>`)
+    $leftPanel.wiki(`<<button 'Masturbate With Kobolds'>><</button>>`)
     return $wrapper
 }
 

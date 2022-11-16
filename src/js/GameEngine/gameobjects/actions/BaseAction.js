@@ -37,7 +37,7 @@ export class BaseAction extends GameObjects.GameObject {
 
     timeSkipMinute(minutes) {
         let ticks = getTicks(minutes)
-        this.scene.golem.timeskip(ticks)
+        this.scene.kobold.timeskip(ticks)
         _.each(this.scene.resources, (resource)=>{resource.timeskip(ticks)})
     }
 

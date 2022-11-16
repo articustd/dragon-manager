@@ -7,10 +7,10 @@ $version
 
 :: StoryMenu {"position":"25,675","size":"100,100"}
 /* <<if $debug>> */
-<<link "Ticker Editor" "devRate">><</link>>
-<<if $started>>[["Hub"|'hub']]<</if>>
-<<if $started>>[["HUD Test"|'hudTest']]<</if>>
+/* <<link "Ticker Editor" "devRate">><</link>> */
+/* <<if $started>>[["Hub"|'hub']]<</if>> */
+/* <<if $started>>[["HUD Test"|'hudTest']]<</if>> */
 /* <<if $started>>[["Event Test"|'eventScenario']]<</if>> */
-<<if $started>><<link "Event Test" "eventScenario">><<testSceneAdd>><</link>><</if>>
-<<if $started>>[["Drawflow"|'drawflow']]<</if>>
+/* <<if $started>><<link "Event Test" "eventScenario">><<testSceneAdd>><</link>><</if>> */
+/* <<if $started>>[["Drawflow"|'drawflow']]<</if>> */
 /* <</if>> */

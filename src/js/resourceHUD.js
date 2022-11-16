@@ -53,9 +53,9 @@ export function showHUD() {
         $drawflowButton.click(() => { Dialog.close(); Engine.play("drawflow") })
     }
     
-    $container.append($('<div/>').wiki(`''Golem''<div><<golemAvailableCounter>>/<<golemPopCounter>></div>`).addClass('hudItem'))
-    $container.append($('<div/>').wiki(`<<manaBar>>''Mana''<</manaBar>>`).addClass('hudItem'))
-    $container.append($('<span/>').wiki(`''Basic''<<resourceCounter 'Basic'>>`).addClass('hudItem'))
+    $container.append($('<div/>').wiki(`''Kobold''<div><<koboldAvailableCounter>>/<<koboldPopCounter>></div>`).addClass('hudItem'))
+    // $container.append($('<div/>').wiki(`<<manaBar>>''Mana''<</manaBar>>`).addClass('hudItem'))
+    $container.append($('<span/>').wiki(`''Gold''<<resourceCounter 'Gold'>>`).addClass('hudItem'))
     $container.append($menuButton)
 
     showResource(gatheringHut, 'Complex', $container)

@@ -6,12 +6,12 @@ import _ from "lodash"
 Macro.add('startEvent', {
     skipArgs: false,
     handler: function () {
-        let [eventName, golems] = this.args
-        let golem = getScene('StartGame').golem
+        let [eventName, kobolds] = this.args
+        let kobold = getScene('StartGame').kobold
         let event = getEvent(eventName)
 
-        if(golems)
-            event = {...event, golems}
+        if(kobolds)
+            event = {...event, kobolds}
 
         logger({event})
 
@@ -23,9 +23,9 @@ Macro.add('startEvent', {
             Engine.play('eventScenario')
         })
 
-        $btn.prop('disabled', !golem.enoughAvailable(golems))
-        golem.on('availablePopChange', () => {
-            $btn.prop('disabled', !golem.enoughAvailable(golems))
+        $btn.prop('disabled', !kobold.enoughAvailable(kobolds))
+        kobold.on('availablePopChange', () => {
+            $btn.prop('disabled', !kobold.enoughAvailable(kobolds))
         })
 
         $(this.output).append($btn)

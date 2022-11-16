@@ -2,7 +2,7 @@ import { logger } from '@util/Logging';
 import { WEBGL, Game } from 'phaser'
 import { StartGame } from './scenes/StartGame';
 import { EventInteraction } from './scenes/EventInteraction';
-import { GolemPlugin } from '@GameEngine/gameobjects/golem';
+import { KoboldPlugin } from '@GameEngine/gameobjects/kobold';
 import { ResourcePlugin } from './gameobjects/resources/ResourcePlugin';
 import { BuildingPlugin } from './gameobjects/buildings/BuildingPlugin';
 import { ActionPlugin } from './gameobjects/actions/ActionPlugin';
@@ -43,7 +43,7 @@ let phaserConfig = {
         global: [
             { key: 'ActionPlugin', plugin: ActionPlugin, start: true },
             { key: 'BuildingPlugin', plugin: BuildingPlugin, start: true },
-            { key: 'GolemPlugin', plugin: GolemPlugin, start: true },
+            { key: 'KoboldPlugin', plugin: KoboldPlugin, start: true },
             { key: 'InteractionPlugin', plugin: InteractionPlugin, start: true },
             { key: 'ResourcePlugin', plugin: ResourcePlugin, start: true },
             { key: 'StoryPlugin', plugin: StoryPlugin, start: true },
