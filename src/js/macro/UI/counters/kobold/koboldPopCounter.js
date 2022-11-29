@@ -6,7 +6,7 @@ Macro.add('koboldPopCounter', {
     handler: function () {
         let $counter = $('<span/>').wiki('?koboldPop')
 
-        getScene('StartGame').kobold.on('popChange', function (pop) { $counter.text(pop) })
+        getScene('MainLoop').kobold.on('popChange', function (pop) { $counter.text(pop) })
 
         $counter.appendTo(this.output)
     }

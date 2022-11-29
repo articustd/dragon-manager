@@ -75,7 +75,7 @@ function passageStartRoutine(ev) {
 }
 
 function loadPhaser(lockID, ev) {
-	if (!getScene('StartGame'))
+	if (!getScene('MainLoop'))
 		setTimeout(loadPhaser, 50, lockID, ev)
 	else {
 		passageStartRoutine(ev)

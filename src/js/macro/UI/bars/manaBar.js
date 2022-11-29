@@ -4,7 +4,7 @@ Macro.add('manaBar', {
     skipArgs: false,
     tags: null,
     handler: function () {
-        let resource = getScene('StartGame').getResource('Mana')
+        let resource = getScene('MainLoop').getResource('Mana')
         let $barContainer = $('<div/>').css({ 'width': '100%', 'height': '30px', 'position': 'relative', 'justify-content': 'center', 'display': 'flex', 'align-items': 'center' })
         let $barText = $('<span/>').css({ 'z-index': '1', 'padding': '5px' })
         let $bar = $('<div/>').css({ 'width': getWidth(resource.total, resource.maxAmount), 'height': '100%', 'background-color': 'blue', 'position': 'absolute', 'top': '0px', 'left': '0px', 'z-index': '-1', 'border-radius': '5px' })

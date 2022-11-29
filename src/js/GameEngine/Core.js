@@ -1,6 +1,6 @@
 import { logger } from '@util/Logging';
 import { WEBGL, Game } from 'phaser'
-import { StartGame } from './scenes/StartGame';
+import { MainLoop } from './scenes/MainLoop';
 import { EventInteraction } from './scenes/EventInteraction';
 import { KoboldPlugin } from '@GameEngine/gameobjects/kobold';
 import { ResourcePlugin } from './gameobjects/resources/ResourcePlugin';
@@ -8,6 +8,7 @@ import { BuildingPlugin } from './gameobjects/buildings/BuildingPlugin';
 import { ActionPlugin } from './gameobjects/actions/ActionPlugin';
 import { InteractionPlugin } from './gameobjects/interactions/InteractionPlugin';
 import { StoryPlugin } from './gameobjects/story';
+import { CharacterPlugin } from './gameobjects/character/CharacterPlugin';
 
 const myCustomCanvas = document.createElement('canvas');
 
@@ -43,13 +44,14 @@ let phaserConfig = {
         global: [
             { key: 'ActionPlugin', plugin: ActionPlugin, start: true },
             { key: 'BuildingPlugin', plugin: BuildingPlugin, start: true },
+            { key: 'CharacterPlugin', plugin: CharacterPlugin, start: true },
             { key: 'KoboldPlugin', plugin: KoboldPlugin, start: true },
             { key: 'InteractionPlugin', plugin: InteractionPlugin, start: true },
             { key: 'ResourcePlugin', plugin: ResourcePlugin, start: true },
             { key: 'StoryPlugin', plugin: StoryPlugin, start: true },
         ]
     },
-    scene: StartGame
+    scene: MainLoop
 }
 
 const game = new Game(phaserConfig)
@@ -71,7 +73,7 @@ function getSceneConfig(scene) {
         case 'EventInteraction':
             return EventInteraction
         default:
-            return StartGame
+            return MainLoop
     }
 }
 

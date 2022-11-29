@@ -1,0 +1,22 @@
+:: fightTest [noreturn, nobr]
+<h1>Fight Test</h1>
+
+<div class="fight-container">
+    <div class="fight-side">
+        <<attackBar 'dragon'>>
+        <br/>
+        <<healthBar 'dragon'>>
+        <div>Stats</div>
+    </div>
+    <div class="fight-center">Center</div>
+    <div class="fight-side fight-right">
+        <<attackBar 'dragon'>>
+        <br/>
+        <<healthBar 'dragon'>>
+        <div>Stats</div>
+    </div>
+</div>
+<div class="fight-container">
+    <div class="fight-buttons fight">Fight Button</div>
+    <div class="fight-buttons leave">Leave Button</div>
+</div>

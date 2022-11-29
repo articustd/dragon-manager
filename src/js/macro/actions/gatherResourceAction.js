@@ -4,10 +4,10 @@ Macro.add('gatherResourceAction', {
     skipArgs: false,
     handler: function () {
         let [actionName] = this.args
-        let action = getScene('StartGame').getAction(actionName)
-        let $barContainer = $('<div/>').css({'width': '200px', 'height': '30px', 'position': 'relative'})
-        let $buttonText = $('<span/>').css({'z-index':'1', 'mix-blend-mode':'difference', 'padding': '5px'}).wiki(actionName)
-        let $bar = $('<div/>').css({ 'width': getWidth(action.cooldown, action.baseCooldown), 'height': '100%', 'background-color': 'white', 'position': 'absolute', 'top': '0px', 'left': '0px', 'z-index': '-1' })
+        let action = getScene('MainLoop').getAction(actionName)
+        let $barContainer = $('<div/>').addClass('tick-bar-container')
+        let $buttonText = $('<span/>').addClass('tick-bar-text-diff').wiki(actionName)
+        let $bar = $('<div/>').addClass('tick-bar-simple').css({ 'width': getWidth(action.cooldown, action.baseCooldown)})
 
         action.on(`${actionName}CooldownChange`, function({cooldown, baseCooldown}) {
             $bar.css({ 'width': getWidth(cooldown, baseCooldown) })
@@ -30,10 +30,10 @@ function getWidth(curr, max) {
 }
 
 function barClick($barContainer, action) {
-    $barContainer.css({'cursor':'pointer'})
+    $barContainer.addClass('tick-bar-action')
     $barContainer.click(()=>{
         action.gatherResource()
-        $barContainer.css({'cursor':'default'})
+        $barContainer.removeClass('tick-bar-action')
         $barContainer.off('click')
     })
 }

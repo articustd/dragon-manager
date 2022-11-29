@@ -1,3 +1,7 @@
 #story {
     margin-top: 0
 };
+
+#ui-bar.stowed~#story {
+    margin-left: 1.5em;
+}

@@ -1,3 +1,5 @@
 import koboldPopBar from './koboldPopBar'
 import resourceBar from './resourceBar'
 import manaBar from './manaBar'
+import healthBar from './healthBar'
+import attackBar from './attackBar'

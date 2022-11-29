@@ -3,20 +3,22 @@ import { BaseResource } from "@GameEngine/gameobjects/resources/BaseResource";
 import { logger } from "@util/Logging";
 import { Scene } from "phaser";
 
-export class StartGame extends Scene {
+export class MainLoop extends Scene {
     autosaveTick
     kobold
+    dragon
     resources
     buildings
     actions
 
     constructor() {
-        super("StartGame")
+        super("MainLoop")
 
         this.autosaveTick = 0
     }
 
     create() {
+        this.dragon = this.add.character('Dragon', 'dragon', {_health: 10, attack: 1, attackSpeed: 60})
         this.kobold = this.add.kobold()
         this.resources = [
             this.add.resource('Mana', 200),
@@ -36,6 +38,8 @@ export class StartGame extends Scene {
             this.add.action({ name: 'Gather Advanced', baseCooldown: 2400, resource: 'Advanced', amount: 2 }),
             this.add.action({ name: 'Sleep' })
         ]
+
+        logger(this.dragon)
     }
 
     update(t, dt) { // FIXME When off tab, updates are not calced, use previous time state to figure out what the new delta is and compensate
@@ -50,10 +54,12 @@ export class StartGame extends Scene {
         let resources = _.map(this.resources, (resource) => { return resource.toJSON() })
         let buildings = _.map(this.buildings, (building) => { return building.toJSON() })
         let actions = _.map(this.actions, (action) => { return action.toJSON() })
-        return { kobold: this.kobold.toJSON(), resources, buildings, actions }
+        return { dragon: this.dragon.toJSON(), kobold: this.kobold.toJSON(), resources, buildings, actions }
     }
 
     loadData(data) {
+        logger({data})
+        this.dragon.loadData(data.dragon)
         this.kobold.loadData(data.kobold)
         _.each(this.resources, (resource) => {
             resource.loadData(_.find(data.resources, { name: resource.name }))
@@ -71,4 +77,6 @@ export class StartGame extends Scene {
     getBuilding(name) { return _.find(this.buildings, { name }) }
 
     getAction(name) { return _.find(this.actions, { name }) }
+
+    getCharacter(name) { return (name === 'dragon') ? this.dragon : this.enemy }
 }

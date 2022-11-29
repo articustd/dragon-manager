@@ -4,8 +4,8 @@ Macro.add('sleepAction', {
     skipArgs: false,
     handler: function () {
         let [amount] = this.args
-        let action = getScene('StartGame').getAction('Sleep')
-        let mana = getScene('StartGame').getResource('Mana')
+        let action = getScene('MainLoop').getAction('Sleep')
+        let mana = getScene('MainLoop').getResource('Mana')
         let $button = $('<button/>').wiki(`Sleep ${amount} Hours`)
 
         $button.click(()=>{

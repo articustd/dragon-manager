@@ -1,5 +1,6 @@
 @use './hubMap';
 @import '../twine/theme';
+@import '../common/buttons';
 
 #hud {
     align-items: center;
@@ -33,20 +34,10 @@
 }
 
 .menuButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: absolute;
     left: -90px;
-    cursor: pointer;
     width: 75px;
     height: 35px;
-
-    background-color: $background-color;
-
-    &:hover {
-        background-color: $hover-color;
-    }
 }
 
 .menu-list {
@@ -55,20 +46,12 @@
     margin: 0;
 
     >li {
-        display: flex;
         border: 1px solid $hover-color;
-        padding: 10px 5px;
-        justify-content: center;
+        height: 2.5em;
         margin: 5px 0px;
 
         >div {
             text-transform: uppercase;
-        }
-
-        &:hover {
-            cursor: pointer;
-
-            background-color: $hover-color;
         }
     }
 }
@@ -80,3 +63,4 @@
 #ui-bar {
     display: none;
 }
+

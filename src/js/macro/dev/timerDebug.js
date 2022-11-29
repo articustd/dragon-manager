@@ -4,8 +4,8 @@ import { logger } from "@util/Logging"
 Macro.add('timerDebug', {
     skipArgs: false,
     handler: function () {
-        let kobold = getScene('StartGame').kobold
-        let goldResource = getScene('StartGame').getResource('Gold')
+        let kobold = getScene('MainLoop').kobold
+        let goldResource = getScene('MainLoop').getResource('Gold')
         let $btn = $('<button/>').text(`${kobold.active ? 'Stop' : 'Start'} Kobold Spawner`)
         let $wrapper = $('<div/>')
 

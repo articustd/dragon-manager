@@ -35,9 +35,9 @@ Macro.add('spendResourceAction', {
 
 function findResource(resourceName) {
     if (resourceName === 'kobold')
-        return getScene('StartGame').kobold
+        return getScene('MainLoop').kobold
 
-    return getScene('StartGame').getResource(resourceName)
+    return getScene('MainLoop').getResource(resourceName)
 }
 
 function getEmitter(resource, callback) {

@@ -7,7 +7,7 @@ Macro.add('startEvent', {
     skipArgs: false,
     handler: function () {
         let [eventName, kobolds] = this.args
-        let kobold = getScene('StartGame').kobold
+        let kobold = getScene('MainLoop').kobold
         let event = getEvent(eventName)
 
         if(kobolds)

@@ -1,0 +1,42 @@
+@use '../twine/theme';
+@use '../common/buttons';
+
+.fight {
+    display: flex;
+    &-container {
+        @extend .fight;
+    }
+
+    &-buttons {
+        @extend .button;
+        
+        height: 3em;
+        margin: 1.5em;
+        flex-grow: 1;
+    }
+
+    &-side {
+        @extend .fight;
+        flex: 3;
+        flex-direction: column;
+
+        &>div {
+            display: flex;
+        }
+    }
+
+    &-right {
+        @extend .fight-side;
+
+        &>div {
+            justify-content: right
+        }
+    }
+
+    &-center {
+        @extend .fight;
+        flex: 2;
+        justify-content: center;
+    }
+}
+

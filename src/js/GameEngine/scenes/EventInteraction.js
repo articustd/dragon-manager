@@ -29,7 +29,6 @@ export class EventInteraction extends Scene {
         this.passiveMin = 600
         this.passiveCounter = 0
         this.story = this.add.story(data.startingDesc)
-        logger(this)
     }
 
     update(t, dt) {
@@ -46,7 +45,7 @@ export class EventInteraction extends Scene {
     }
 
     consumeKobolds(amt = this.kobolds) {
-        getScene('StartGame').kobold.spend(amt)
+        getScene('MainLoop').kobold.spend(amt)
     }
 
     changePassiveSnippets(name) {

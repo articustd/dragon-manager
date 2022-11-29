@@ -36,7 +36,7 @@ function getConstructionCommands() {
     }
 
     function getNonPurchasedBuildings() {
-        return _.filter(getScene('StartGame').buildings, { purchased: false })
+        return _.filter(getScene('MainLoop').buildings, { purchased: false })
     }
 
     assignPanel()

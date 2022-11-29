@@ -50,3 +50,7 @@ sugarcube-2:
       name: storyDesc
     drawflow:
       name: drawflow
+    healthBar:
+      name: healthBar
+    attackBar:
+      name: attackBar

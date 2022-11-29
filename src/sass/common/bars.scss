@@ -1,0 +1,93 @@
+@import '../twine/theme';
+
+.tick-bar {
+    &-container {
+        width: 200px;
+        height: 30px;
+        position: relative;
+    }
+
+    &-action {
+        cursor: pointer;
+    }
+
+    &-text {
+        z-index: 1;
+        padding: 5px;
+
+        &-diff {
+            @extend .tick-bar-text;
+            mix-blend-mode: difference;
+        }
+    }
+
+    &-simple {
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: -1;
+    }
+}
+
+.resource-bar {
+    @extend .tick-bar-container;
+    display: flex;
+
+    width: auto;
+
+    align-items: center;
+    justify-content: center !important;
+
+    &-fill {
+        position: absolute;
+        top: 0px;
+
+        z-index: -1;
+        height: 100%;
+    }
+}
+
+.mana-bar {
+    @extend .resource-bar;
+
+    &.fill {
+        @extend .resource-bar-fill;
+
+        background-color: blue;
+    }
+
+    &.text {
+        @extend .tick-bar-text;
+    }
+}
+
+.health-bar {
+    @extend .resource-bar;
+
+    &.fill {
+        @extend .resource-bar-fill;
+
+        background-color: red;
+    }
+
+    &.text {
+        @extend .tick-bar-text;
+    }
+}
+
+.attack-bar {
+    @extend .resource-bar;
+
+    &.fill {
+        @extend .resource-bar-fill;
+
+        background-color: white;
+    }
+
+    &.text {
+        @extend .tick-bar-text-diff;
+    }
+}

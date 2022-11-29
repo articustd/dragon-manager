@@ -6,7 +6,7 @@ Macro.add('koboldPopBar', {
     skipArgs: false,
     tags: null,
     handler: function () {
-        let kobold = getScene('StartGame').kobold
+        let kobold = getScene('MainLoop').kobold
         let $barContainer = $('<div/>').css({'width': '200px', 'height': '30px', 'position': 'relative'})
         let $barText = $('<span/>').css({'z-index':'1', 'mix-blend-mode':'difference', 'padding': '5px'})
         let $bar = $('<div/>').css({ 'width': getWidth(kobold.currSpawnRate, kobold.spawnRate), 'height': '100%', 'background-color': 'white', 'position': 'absolute', 'top': '0px', 'left': '0px', 'z-index': '-1' })

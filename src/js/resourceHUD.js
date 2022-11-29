@@ -2,10 +2,10 @@ import { getScene } from "@GameEngine/Core"
 import { logger } from "@util/Logging"
 
 export function showHUD() {
-    let gatheringHut = getScene('StartGame').getBuilding('Gathering Hut')
-    let workshop = getScene('StartGame').getBuilding('Workshop')
+    let gatheringHut = getScene('MainLoop').getBuilding('Gathering Hut')
+    let workshop = getScene('MainLoop').getBuilding('Workshop')
     let $container = $('<div/>').attr('id', 'hud')
-    let $menuButton = $('<div/>').wiki(`Menu`).addClass('menuButton')
+    let $menuButton = $('<div/>').wiki(`Menu`).addClass('menuButton').addClass('button')
 
     let $saveButton = createMenuItem(`Saves`)
     let $restartButton = createMenuItem(`Restart`)
@@ -14,6 +14,7 @@ export function showHUD() {
     let $hubButton = createMenuItem(`Hub`)
     let $hudTestButton = createMenuItem(`Hud Test`)
     let $eventTestButton = createMenuItem(`Event Test`)
+    let $fightTestButton = createMenuItem(`Fight Test`)
     let $drawflowButton = createMenuItem(`Drawflow`)
 
     let $menuList = $('<ul/>').addClass('menu-list')
@@ -21,13 +22,12 @@ export function showHUD() {
         .append($restartButton)
     let $menuVersion = $('<div/>').addClass('menu-version').wiki(variables().version)
 
-    logger(variables())
-
     if (variables().dev)
         $menuList.append($tickerEditorButton)
             .append($hubButton)
             .append($hudTestButton)
             .append($eventTestButton)
+            .append($fightTestButton)
             .append($drawflowButton)
 
     $menuButton.click(() => {
@@ -50,6 +50,7 @@ export function showHUD() {
         $hubButton.click(() => { Dialog.close(); Engine.play("hub") })
         $hudTestButton.click(() => { Dialog.close(); Engine.play("hudTest") })
         $eventTestButton.click(() => { Dialog.close(); Engine.play("eventScenario") })
+        $fightTestButton.click(() => { Dialog.close(); Engine.play("fightTest") })
         $drawflowButton.click(() => { Dialog.close(); Engine.play("drawflow") })
     }
     
@@ -72,7 +73,7 @@ export function showHUD() {
 }
 
 function createMenuItem(text) {
-    return $('<li/>').append($('<div/>').wiki(text))
+    return $('<li/>').append($('<div/>').addClass('button').wiki(text))
 }
 
 function showResource(building, resource, $container) {

@@ -6,7 +6,7 @@ Macro.add('hideUntilBuilt', {
     tags: null,
     handler: function () {
         let [buildingName] = this.args
-        let building = getScene('StartGame').getBuilding(buildingName)
+        let building = getScene('MainLoop').getBuilding(buildingName)
         let $wrapper = $('<div/>').css('display', (building.purchased) ? 'block' : 'none').wiki(this.payload[0].contents)
 
         if (!building.purchased)

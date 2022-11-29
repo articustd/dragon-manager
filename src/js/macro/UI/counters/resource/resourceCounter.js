@@ -7,7 +7,7 @@ Macro.add('resourceCounter', {
         let [resourceName] = this.args
         let $counter = $('<span/>').wiki(`?${resourceName}ResourceTotal`)
 
-        getScene('StartGame').getResource(resourceName).on(`${resourceName}TotalChange`, function (total) { $counter.text(total) })
+        getScene('MainLoop').getResource(resourceName).on(`${resourceName}TotalChange`, function (total) { $counter.text(total) })
 
         $counter.appendTo(this.output)
     }
